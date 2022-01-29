@@ -72,7 +72,7 @@ const MobileLink = (props) => <NavLink {...props} isMobile />;
 const NavLogo = () => {
 	return (
 		<Link href={HOME_ROUTE}>
-			<Logo src="images/logo.png" />
+			<Logo src="images/full-logo-square.png" />
 		</Link>
 	);
 };

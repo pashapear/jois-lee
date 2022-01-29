@@ -1,3 +1,4 @@
+import Head from "next/head";
 import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import Navigation from "../components/Navigation";
 import useIsMobile from "../hooks/useIsMobile";
@@ -23,10 +24,10 @@ const theme = {
 
 const PageContainer = styled.div`
 	/* @import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap"); */
-	@import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap");
-
+	/* @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap");
+	@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500&display=swap');
 	/* font-family: "Handlee", cursive; */
-	font-family: "Raleway", sans-serif;
+	font-family: "Comfortaa", cursive;
 	font-size: 1.2rem;
 	display: flex;
 	flex-direction: column;
@@ -48,6 +49,12 @@ export default function App({ Component, pageProps }) {
 	const isMobile = useIsMobile();
 	return (
 		<>
+			<Head>
+				<style>
+					@import
+					url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500&display=swap');
+				</style>
+			</Head>
 			<GlobalStyle />
 			<ThemeProvider theme={theme}>
 				<PageContainer>
