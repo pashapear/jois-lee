@@ -1,12 +1,22 @@
 import React from "react";
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { MenuButton } from "./MenuButton";
 import useIsMobile from "../hooks/useIsMobile";
 import { motion, AnimatePresence } from "framer-motion";
 
-const LOGO_SIZE = 20;
+const rotate = keyframes`
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+`;
+
+const LOGO_SIZE = 10;
 
 const NavBar = styled.nav`
 	display: flex;
@@ -17,6 +27,7 @@ const NavBar = styled.nav`
 const Logo = styled.img`
 	height: ${LOGO_SIZE}vh;
 	cursor: pointer;
+	animation: ${rotate} 28s linear infinite;
 `;
 const Links = styled.div`
 	display: flex;
@@ -72,7 +83,7 @@ const MobileLink = (props) => <NavLink {...props} isMobile />;
 const NavLogo = () => {
 	return (
 		<Link href={HOME_ROUTE}>
-			<Logo src="images/full-logo-square.png" />
+			<Logo src="images/empty-logo.png" />
 		</Link>
 	);
 };
