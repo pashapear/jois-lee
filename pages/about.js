@@ -38,7 +38,7 @@ export default function About() {
 			<Bio isMobile={isMobile}>
 				<Greeting>Hello I'm Jois Lee,</Greeting>
 				<Section>
-					I am a Junior UX Designer with a background in psychology,
+					I am a freelance UX Designer with a background in psychology,
 					communication, and an extensive experience in design & empathy. I’m
 					pursuing a career in UX Design because of its interdisciplinary
 					nature: design, tech, and engaging with people.

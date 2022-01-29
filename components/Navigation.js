@@ -12,7 +12,7 @@ const rotate = keyframes`
   }
 
   to {
-    transform: rotateZ(360deg);
+    transform: rotateZ(-360deg);
   }
 `;
 
@@ -36,24 +36,35 @@ const Links = styled.div`
 `;
 const LinkTitle = styled.span`
 	cursor: pointer;
-	padding-bottom: ${({ isMobile }) => (isMobile ? 0 : "1vh")};
-	margin-bottom: ${({ isMobile }) => (isMobile ? "20%" : "0")};
+	padding-bottom: ${({ isMobile }) => (isMobile ? 0 : "0.2rem")};
 	border-bottom: ${({ active }) =>
-		active ? "3px solid #000" : "3px solid transparent"};
-	transition: border-bottom 600ms;
+		active ? "2px solid #000" : "2px solid transparent"};
+	transition: border-bottom 800ms;
 	font-size: ${({ isMobile }) => (isMobile ? "2rem" : "unset")};
 `;
 const MobileMenu = styled(motion.div)`
 	position: absolute;
-	top: 28vh;
+	top: 0;
 	left: 0;
 	width: 100vw;
-	height: 66.66vh;
+	height: 100vh;
 	background-color: white;
 	display: flex;
 	flex-direction: column;
-	justify-content: center;
 	align-items: center;
+`;
+const MobileNavBar = styled(NavBar)`
+	display: flex;
+	justify-content: flex-end;
+	width: 92vw;
+`;
+const MobileLinks = styled.div`
+	padding-top: 25vh;
+	flex: 1;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 4rem;
 `;
 
 const HOME_ROUTE = "/";
@@ -120,9 +131,18 @@ export default function Navigation() {
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
 						>
-							<MobileLink name="Home" route={HOME_ROUTE} />
-							<MobileLink name="About" route={ABOUT_ROUTE} />
-							<MobileLink name="Projects" route={PROJECTS_ROUTE} />
+							<MobileNavBar>
+								<MenuButton
+									isOpen={isOpen}
+									onClick={() => setOpen(!isOpen)}
+									transition={{ type: "spring", stiffness: 260, damping: 20 }}
+								/>
+							</MobileNavBar>
+							<MobileLinks>
+								<MobileLink name="Home" route={HOME_ROUTE} />
+								<MobileLink name="About" route={ABOUT_ROUTE} />
+								<MobileLink name="Projects" route={PROJECTS_ROUTE} />
+							</MobileLinks>
 						</MobileMenu>
 					)}
 				</AnimatePresence>
