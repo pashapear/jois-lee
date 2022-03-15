@@ -8,11 +8,17 @@ const GlobalStyle = createGlobalStyle`
   :root {
     --primary: #0d6397;
   }
+  html {
+	scroll-behavior: smooth;
+  }
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
-    font-family: sans-serif;
+    font-family: "Comfortaa", sans-serif;
+  }
+  a {
+	color: black;
   }
 `;
 
@@ -23,12 +29,6 @@ const theme = {
 };
 
 const PageContainer = styled.div`
-	/* @import url("https://fonts.googleapis.com/css2?family=Handlee&display=swap"); */
-	/* @import url("https://fonts.googleapis.com/css2?family=Raleway:wght@100&display=swap");
-	@import url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500&display=swap');
-	/* font-family: "Handlee", cursive; */
-	font-family: "Comfortaa", cursive;
-	font-size: 1.2rem;
 	display: flex;
 	flex-direction: column;
 	height: 100vh;
@@ -38,6 +38,7 @@ const PageContainer = styled.div`
 const PageContent = styled(motion.div)`
 	flex: 1 0 auto;
 	padding: ${({ isMobile }) => (isMobile ? "0 4vw" : "0 8vw 0 20vw")};
+	font-size: ${({ isMobile }) => (isMobile ? "16px" : "32px")};
 `;
 
 const list = {
@@ -52,12 +53,12 @@ export default function App({ Component, pageProps }) {
 			<Head>
 				<style>
 					@import
-					url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;500&display=swap');
+					url('https://fonts.googleapis.com/css2?family=Comfortaa:wght@300;400;700&display=swap');
 				</style>
 			</Head>
 			<GlobalStyle />
 			<ThemeProvider theme={theme}>
-				<PageContainer>
+				<PageContainer isMobile={isMobile}>
 					<Navigation />
 					<AnimatePresence>
 						<PageContent

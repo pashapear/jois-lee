@@ -6,24 +6,43 @@ const Wrapper = styled.div`
 `;
 
 const Title = styled.h1`
-	margin-bottom: 4vh;
+	max-width: 30rem;
 `;
-const Blurb = styled.h2`
+const Blurb = styled.h4`
 	font-weight: normal;
+	line-height: 160%;
 	max-width: 75vw;
 	@media (min-width: 1024px) {
 		max-width: 50vw;
 	}
 `;
 
-export default function Home() {
+const LandingWrapper = styled.div`
+	padding-bottom: 2000px;
+`;
+
+const Cards = styled.div`
+	height: 1000px;
+	width: 100%;
+	background-color: black;
+`;
+
+const Landing = () => {
 	return (
-		<Wrapper>
-			<Title>Jois Lee - UX Designer</Title>
-			<Blurb>Lifelong learner with a creative mind.</Blurb>
+		<LandingWrapper>
+			<Title>Jois Lee = UX Designer</Title>
 			<Blurb>
 				Internationally minded UX designer with focus on people and processes.
 			</Blurb>
+		</LandingWrapper>
+	);
+};
+
+export default function Home() {
+	return (
+		<Wrapper>
+			<Landing />
+			<Cards id="projects" />
 		</Wrapper>
 	);
 }

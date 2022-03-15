@@ -1,16 +1,7 @@
 import styled from "styled-components";
 import useIsMobile from "../hooks/useIsMobile";
 
-const AboutPage = styled.div`
-	display: grid;
-	grid-template-columns: ${({ isMobile }) => (isMobile ? "" : "1fr 2fr")};
-`;
-
-const Photo = styled.div`
-	height: 40vh;
-	width: 25vw;
-	background: gray;
-`;
+const AboutPage = styled.div``;
 
 const Bio = styled.div`
 	max-width: ${({ isMobile }) => (isMobile ? "100vw" : "50vw")};
@@ -33,8 +24,7 @@ const SectionItem = styled.li``;
 export default function About() {
 	const isMobile = useIsMobile();
 	return (
-		<AboutPage isMobile={isMobile}>
-			{!isMobile && <Photo />}
+		<AboutPage id="about">
 			<Bio isMobile={isMobile}>
 				<Greeting>Hello I'm Jois Lee,</Greeting>
 				<Section>

@@ -34,13 +34,25 @@ const Links = styled.div`
 	align-items: flex-start;
 	column-gap: 4vw;
 `;
+
+const LinkWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+`;
 const LinkTitle = styled.span`
 	cursor: pointer;
+	color: ${({ active }) => (active ? "black" : "rgba(0, 0, 0, 0.6)")};
 	padding-bottom: ${({ isMobile }) => (isMobile ? 0 : "0.2rem")};
-	border-bottom: ${({ active }) =>
-		active ? "2px solid #000" : "2px solid transparent"};
-	transition: border-bottom 800ms;
-	font-size: ${({ isMobile }) => (isMobile ? "2rem" : "unset")};
+	font-size: ${({ isMobile }) => (isMobile ? "2rem" : "initial")};
+	transition: color 800ms;
+`;
+const ActiveLinkIndicator = styled.div`
+	background-color: black;
+	width: 0.35rem;
+	height: 0.35rem;
+	border-radius: 50%;
 `;
 const MobileMenu = styled(motion.div)`
 	position: absolute;
@@ -67,24 +79,29 @@ const MobileLinks = styled.div`
 	gap: 4rem;
 `;
 
-const HOME_ROUTE = "/";
-const ABOUT_ROUTE = "/about";
-const PROJECTS_ROUTE = "/projects";
+const HOME_ROUTE = "#home";
+const ABOUT_ROUTE = "#about";
+const ETC_ROUTE = "#etc";
+const CONTACT_ROUTE = "#contact";
 
 const NavBarContext = React.createContext({ setOpen: () => {} });
 
 const NavLink = ({ name, route, isMobile }) => {
 	const router = useRouter();
 	const { setOpen } = React.useContext(NavBarContext);
+	const active = router.asPath === `/${route}`;
 	return (
 		<Link href={route}>
-			<LinkTitle
-				onClick={() => setOpen(false)}
-				active={router.pathname === route}
-				isMobile={isMobile}
-			>
-				{name}
-			</LinkTitle>
+			<LinkWrapper>
+				<LinkTitle
+					onClick={() => setOpen(false)}
+					active={active}
+					isMobile={isMobile}
+				>
+					{name}
+				</LinkTitle>
+				{active && <ActiveLinkIndicator />}
+			</LinkWrapper>
 		</Link>
 	);
 };
@@ -110,7 +127,6 @@ export default function Navigation() {
 		<NavBarContext.Provider value={{ setOpen }}>
 			<NavBar>
 				<NavLogo />
-
 				{isMobile ? (
 					<MenuButton
 						isOpen={isOpen}
@@ -118,11 +134,22 @@ export default function Navigation() {
 						transition={{ type: "spring", stiffness: 260, damping: 20 }}
 					/>
 				) : (
-					<Links>
-						<NavLink name="Home" route={HOME_ROUTE} />
-						<NavLink name="About" route={ABOUT_ROUTE} />
-						<NavLink name="Projects" route={PROJECTS_ROUTE} />
-					</Links>
+					<>
+						<Links>
+							<NavLink name="work" route={HOME_ROUTE} />
+							<NavLink name="about" route={ABOUT_ROUTE} />
+							<NavLink name="ect" route={ETC_ROUTE} />
+							<NavLink name="contact" route={CONTACT_ROUTE} />
+						</Links>
+						<Links>
+							<span>
+								<a target="#" href="https://twitter.com/joisleeux">
+									@
+								</a>
+								joisleeux
+							</span>
+						</Links>
+					</>
 				)}
 				<AnimatePresence>
 					{isOpen && (
@@ -139,9 +166,10 @@ export default function Navigation() {
 								/>
 							</MobileNavBar>
 							<MobileLinks>
-								<MobileLink name="Home" route={HOME_ROUTE} />
-								<MobileLink name="About" route={ABOUT_ROUTE} />
-								<MobileLink name="Projects" route={PROJECTS_ROUTE} />
+								<MobileLink name="work" route={HOME_ROUTE} />
+								<MobileLink name="about" route={ABOUT_ROUTE} />
+								<MobileLink name="ect" route={ETC_ROUTE} />
+								<MobileLink name="contact" route={CONTACT_ROUTE} />
 							</MobileLinks>
 						</MobileMenu>
 					)}
