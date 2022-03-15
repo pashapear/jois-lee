@@ -27,6 +27,26 @@ const Cards = styled.div`
 	background-color: black;
 `;
 
+const Buttons = styled.div`
+	display: flex;
+	gap: 0.75rem;
+`;
+
+const Button = styled.button`
+	cursor: pointer;
+	background-color: black;
+	border-radius: var(--radius);
+	border: 1px solid black;
+	color: white;
+	padding: 0.75rem 1.75rem;
+`;
+
+const ButtonClear = styled(Button)`
+	background-color: transparent;
+	border-radius: var(--radius);
+	color: black;
+`;
+
 const Landing = () => {
 	return (
 		<LandingWrapper>
@@ -34,6 +54,10 @@ const Landing = () => {
 			<Blurb>
 				Internationally minded UX designer with focus on people and processes.
 			</Blurb>
+			<Buttons>
+				<Button onClick={() => console.log("Hi")}>Say Hi</Button>
+				<ButtonClear>Discover My Works</ButtonClear>
+			</Buttons>
 		</LandingWrapper>
 	);
 };
