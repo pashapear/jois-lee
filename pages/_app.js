@@ -23,15 +23,22 @@ const GlobalStyle = createGlobalStyle`
   }
   a {
 	color: black;
+	text-decoration: none;
   }
   button {
-	font-family: 'Poppins', sans-serif;
+	/* font-family: 'Poppins', sans-serif; */
 	font-size: 1rem;
+	:hover {
+		transform: scale(0.975);
+	}
 
 	:active {
 		transform: scale(0.95);
-		transition: transform 200ms;
 	}
+	transition: transform 100ms;
+  }
+  h5 {
+	  font-size: 1.625rem;
   }
 `;
 
@@ -50,7 +57,7 @@ const PageContainer = styled.div`
 
 const PageContent = styled(motion.div)`
 	flex: 1 0 auto;
-	padding: ${({ isMobile }) => (isMobile ? "0 4vw" : "0 8vw 0 20vw")};
+	padding: ${({ isMobile }) => (isMobile ? "0 4vw" : "0 4vw")};
 	font-size: ${({ isMobile }) => (isMobile ? "1rem" : "2rem")};
 `;
 

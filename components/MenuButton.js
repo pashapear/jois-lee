@@ -4,6 +4,7 @@ import { motion } from "framer-motion";
 
 const MenuBtnContainer = styled.div`
 	cursor: pointer;
+	transform: scale(0.5);
 `;
 
 const MenuButton = ({

@@ -21,6 +21,7 @@ const LOGO_SIZE = 10;
 const NavBar = styled.nav`
 	display: flex;
 	justify-content: space-between;
+	align-items: center;
 	width: auto;
 	padding: 4vh 4vw;
 `;
@@ -36,6 +37,7 @@ const Links = styled.div`
 `;
 
 const LinkWrapper = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -49,6 +51,8 @@ const LinkTitle = styled.span`
 	transition: color 800ms;
 `;
 const ActiveLinkIndicator = styled.div`
+	position: absolute;
+	top: 2rem;
 	background-color: black;
 	width: 0.35rem;
 	height: 0.35rem;
@@ -78,6 +82,40 @@ const MobileLinks = styled.div`
 	align-items: center;
 	gap: 4rem;
 `;
+
+const Footer = styled.div`
+	background-color: white;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 1rem;
+	padding: 1rem;
+	text-transform: lowercase;
+	border: 1px solid rgba(0, 0, 0, 0.05);
+	border-radius: var(--radius);
+	-webkit-box-shadow: 10px 10px 11px -2px rgba(0, 0, 0, 0.39);
+	box-shadow: 10px 10px 11px -2px rgba(0, 0, 0, 0.39);
+`;
+
+const FooterItem = styled.div`
+	display: flex;
+	font-size: 1rem;
+	gap: 0.5rem;
+`;
+
+const FooterLink = styled(Link)`
+	display: flex;
+	justify-content: space-between;
+`;
+
+const footerLinks = [
+	{ label: "UI/UX DESIGN", value: 0 },
+	{ label: "USER RESEARCH", value: 1 },
+	{ label: "VISUAL DESIGN", value: 2 },
+	{ label: "BRANDING  ", value: 3 },
+	{ label: "PROTOTYPING", value: 4 },
+	{ label: "PRODUCT THINKING", value: 5 }
+];
 
 const HOME_ROUTE = "#home";
 const ABOUT_ROUTE = "#about";
@@ -119,10 +157,43 @@ const NavLogo = () => {
 export default function Navigation() {
 	const isMobile = useIsMobile();
 	const [isOpen, setOpen] = React.useState(false);
+	const [showProjectMenu, setShowProjectMenu] = React.useState(false);
+	const [menuPosition, setMenuPosition] = React.useState(null);
+	const [overMenu, setOverMenu] = React.useState(false);
+	const rootRef = React.useRef(null);
+	const menuRef = React.useRef(null);
+
+	React.useEffect(() => {
+		if (rootRef.current) {
+			rootRef.current.onmouseenter = () => setShowProjectMenu(true);
+			rootRef.current.onmouseleave = () =>
+				setTimeout(
+					(viewingMenu) => !viewingMenu && setShowProjectMenu(false),
+					1000,
+					overMenu
+				);
+			const { left, bottom, right } = rootRef.current.getBoundingClientRect();
+			setMenuPosition({
+				left,
+				bottom,
+				right
+			});
+		}
+	}, [rootRef.current]);
+
+	React.useEffect(() => {
+		if (menuRef.current) {
+			menuRef.current.onmouseenter = () => setOverMenu(true);
+			menuRef.current.onmouseleave = () => {
+				setShowProjectMenu(false);
+			};
+		}
+	}, [menuRef.current, showProjectMenu]);
 
 	React.useEffect(() => {
 		if (!isMobile) setOpen(false);
 	}, [isMobile]);
+
 	return (
 		<NavBarContext.Provider value={{ setOpen }}>
 			<NavBar>
@@ -136,18 +207,17 @@ export default function Navigation() {
 				) : (
 					<>
 						<Links>
-							<NavLink name="work" route={HOME_ROUTE} />
+							<div ref={rootRef}>
+								<NavLink name="work" route={HOME_ROUTE} />
+							</div>
 							<NavLink name="about" route={ABOUT_ROUTE} />
 							<NavLink name="ect" route={ETC_ROUTE} />
 							<NavLink name="contact" route={CONTACT_ROUTE} />
 						</Links>
 						<Links>
-							<span>
-								<a target="#" href="https://twitter.com/joisleeux">
-									@
-								</a>
-								joisleeux
-							</span>
+							<a target="#" href="https://twitter.com/joisleeux">
+								@joisleeux
+							</a>
 						</Links>
 					</>
 				)}
@@ -174,6 +244,24 @@ export default function Navigation() {
 						</MobileMenu>
 					)}
 				</AnimatePresence>
+				{showProjectMenu && (
+					<Footer
+						ref={menuRef}
+						style={{
+							position: "absolute",
+							left: menuPosition?.left || 0,
+							top: (menuPosition?.bottom || 0) + 8
+						}}
+					>
+						{footerLinks.map((item, index) => (
+							<FooterItem>
+								<FooterLink key={item.value} href={`#project-${item.value}`}>
+									{item.label}
+								</FooterLink>
+							</FooterItem>
+						))}
+					</Footer>
+				)}
 			</NavBar>
 		</NavBarContext.Provider>
 	);
