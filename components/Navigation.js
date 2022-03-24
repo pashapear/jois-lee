@@ -83,7 +83,7 @@ const MobileLinks = styled.div`
 	gap: 4rem;
 `;
 
-const Footer = styled.div`
+const ProjectMenu = styled.div`
 	background-color: white;
 	display: flex;
 	flex-direction: column;
@@ -97,18 +97,18 @@ const Footer = styled.div`
 	box-shadow: 10px 10px 11px -2px rgba(0, 0, 0, 0.39);
 `;
 
-const FooterItem = styled.div`
+const ProjectMenuItem = styled.div`
 	display: flex;
 	font-size: 1rem;
 	gap: 0.5rem;
 `;
 
-const FooterLink = styled(Link)`
+const ProjectMenuLink = styled(Link)`
 	display: flex;
 	justify-content: space-between;
 `;
 
-const footerLinks = [
+const projectLinks = [
 	{ label: "UI/UX DESIGN", value: 0 },
 	{ label: "USER RESEARCH", value: 1 },
 	{ label: "VISUAL DESIGN", value: 2 },
@@ -245,7 +245,7 @@ export default function Navigation() {
 					)}
 				</AnimatePresence>
 				{showProjectMenu && (
-					<Footer
+					<ProjectMenu
 						ref={menuRef}
 						style={{
 							position: "absolute",
@@ -253,14 +253,17 @@ export default function Navigation() {
 							top: (menuPosition?.bottom || 0) + 8
 						}}
 					>
-						{footerLinks.map((item, index) => (
-							<FooterItem>
-								<FooterLink key={item.value} href={`#project-${item.value}`}>
+						{projectLinks.map((item, index) => (
+							<ProjectMenuItem>
+								<ProjectMenuLink
+									key={item.value}
+									href={`#project-${item.value}`}
+								>
 									{item.label}
-								</FooterLink>
-							</FooterItem>
+								</ProjectMenuLink>
+							</ProjectMenuItem>
 						))}
-					</Footer>
+					</ProjectMenu>
 				)}
 			</NavBar>
 		</NavBarContext.Provider>
