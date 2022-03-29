@@ -83,6 +83,10 @@ const MobileLinks = styled.div`
 	gap: 4rem;
 `;
 
+// const ProjectMenuForceField = styled.div`
+// 	position: absolute;
+// `;
+
 const ProjectMenu = styled.div`
 	background-color: white;
 	display: flex;
@@ -90,7 +94,6 @@ const ProjectMenu = styled.div`
 	justify-content: space-between;
 	gap: 1rem;
 	padding: 1rem;
-	text-transform: lowercase;
 	border: 1px solid rgba(0, 0, 0, 0.05);
 	border-radius: var(--radius);
 	-webkit-box-shadow: 10px 10px 11px -2px rgba(0, 0, 0, 0.39);
@@ -109,15 +112,16 @@ const ProjectMenuLink = styled(Link)`
 `;
 
 const projectLinks = [
-	{ label: "UI/UX DESIGN", value: 0 },
-	{ label: "USER RESEARCH", value: 1 },
-	{ label: "VISUAL DESIGN", value: 2 },
-	{ label: "BRANDING  ", value: 3 },
-	{ label: "PROTOTYPING", value: 4 },
-	{ label: "PRODUCT THINKING", value: 5 }
+	{ label: "LinkedIn Features", value: 0 },
+	{ label: "Planta App Redesign", value: 1 },
+	{ label: "Pasha Pear", value: 2 },
+	{ label: "M____", value: 3 },
+	{ label: "Etc.", value: 4 },
+	{ label: "Photography", value: 5 }
 ];
 
 const HOME_ROUTE = "#home";
+const WORK_ROUTE = "#work";
 const ABOUT_ROUTE = "#about";
 const ETC_ROUTE = "#etc";
 const CONTACT_ROUTE = "#contact";
@@ -195,33 +199,34 @@ export default function Navigation() {
 	}, [isMobile]);
 
 	return (
-		<NavBarContext.Provider value={{ setOpen }}>
-			<NavBar>
-				<NavLogo />
-				{isMobile ? (
-					<MenuButton
-						isOpen={isOpen}
-						onClick={() => setOpen(!isOpen)}
-						transition={{ type: "spring", stiffness: 260, damping: 20 }}
-					/>
-				) : (
-					<>
-						<Links>
-							<div ref={rootRef}>
-								<NavLink name="work" route={HOME_ROUTE} />
-							</div>
-							<NavLink name="about" route={ABOUT_ROUTE} />
-							<NavLink name="ect" route={ETC_ROUTE} />
-							<NavLink name="contact" route={CONTACT_ROUTE} />
-						</Links>
-						<Links>
-							<a target="#" href="https://twitter.com/joisleeux">
-								@joisleeux
-							</a>
-						</Links>
-					</>
-				)}
-				<AnimatePresence>
+		<AnimatePresence>
+			<NavBarContext.Provider value={{ setOpen }}>
+				<NavBar id="home">
+					<NavLogo />
+					{isMobile ? (
+						<MenuButton
+							isOpen={isOpen}
+							onClick={() => setOpen(!isOpen)}
+							transition={{ type: "spring", stiffness: 260, damping: 20 }}
+						/>
+					) : (
+						<>
+							<Links>
+								<div ref={rootRef}>
+									<NavLink name="work" route={WORK_ROUTE} />
+								</div>
+								<NavLink name="about" route={ABOUT_ROUTE} />
+								<NavLink name="ect" route={ETC_ROUTE} />
+								<NavLink name="contact" route={CONTACT_ROUTE} />
+							</Links>
+							<Links>
+								<a target="#" href="https://twitter.com/joisleeux">
+									@joisleeux
+								</a>
+							</Links>
+						</>
+					)}
+
 					{isOpen && (
 						<MobileMenu
 							initial={{ opacity: 0 }}
@@ -236,36 +241,38 @@ export default function Navigation() {
 								/>
 							</MobileNavBar>
 							<MobileLinks>
-								<MobileLink name="work" route={HOME_ROUTE} />
+								<MobileLink name="work" route={WORK_ROUTE} />
 								<MobileLink name="about" route={ABOUT_ROUTE} />
 								<MobileLink name="ect" route={ETC_ROUTE} />
 								<MobileLink name="contact" route={CONTACT_ROUTE} />
 							</MobileLinks>
 						</MobileMenu>
 					)}
-				</AnimatePresence>
-				{showProjectMenu && (
-					<ProjectMenu
-						ref={menuRef}
-						style={{
-							position: "absolute",
-							left: menuPosition?.left || 0,
-							top: (menuPosition?.bottom || 0) + 8
-						}}
-					>
-						{projectLinks.map((item, index) => (
-							<ProjectMenuItem>
-								<ProjectMenuLink
-									key={item.value}
-									href={`#project-${item.value}`}
-								>
-									{item.label}
-								</ProjectMenuLink>
-							</ProjectMenuItem>
-						))}
-					</ProjectMenu>
-				)}
-			</NavBar>
-		</NavBarContext.Provider>
+					{/* {showProjectMenu && (
+						// <ProjectMenuForceField>
+						<ProjectMenu
+							ref={menuRef}
+							style={{
+								position: "absolute",
+								left: menuPosition?.left || 0,
+								top: (menuPosition?.bottom || 0) + 8
+							}}
+						>
+							{projectLinks.map((item) => (
+								<ProjectMenuItem>
+									<ProjectMenuLink
+										key={item.value}
+										href={`#project-${item.value}`}
+									>
+										{item.label}
+									</ProjectMenuLink>
+								</ProjectMenuItem>
+							))}
+						</ProjectMenu>
+						// </ProjectMenuForceField>
+					)} */}
+				</NavBar>
+			</NavBarContext.Provider>
+		</AnimatePresence>
 	);
 }

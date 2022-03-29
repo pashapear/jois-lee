@@ -1,6 +1,8 @@
 import styled from "styled-components";
 import useIsMobile from "../hooks/useIsMobile";
 import Link from "next/link";
+import { BlackButton, ClearButton } from "../components/Button";
+import { ProjectCards } from "../components/ProjectCards";
 
 const Wrapper = styled.div`
 	display: flex;
@@ -30,30 +32,9 @@ const LandingWrapper = styled.div`
 	flex: 1;
 `;
 
-const Cards = styled.div`
-	height: 1000px;
-	width: 100%;
-	/* background-color: black; */
-`;
-
 const Buttons = styled.div`
 	display: flex;
 	gap: 0.75rem;
-`;
-
-const BlackButton = styled.button`
-	cursor: pointer;
-	background-color: black;
-	border-radius: var(--radius);
-	border: 1px solid black;
-	color: white;
-	padding: 0.813rem 1.5rem;
-`;
-
-const ClearButton = styled(BlackButton)`
-	background-color: transparent;
-	border-radius: var(--radius);
-	color: black;
 `;
 
 const Landing = () => {
@@ -76,7 +57,7 @@ export default function Home() {
 	return (
 		<Wrapper isMobile={isMobile}>
 			<Landing />
-			<Cards id="projects" />
+			<ProjectCards />
 		</Wrapper>
 	);
 }
