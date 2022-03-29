@@ -3,7 +3,7 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import Navigation from "../components/Navigation";
 import useIsMobile from "../hooks/useIsMobile";
 import { motion, AnimatePresence } from "framer-motion";
-import "../normalize.css";
+// import "../normalize.css";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -40,12 +40,12 @@ const GlobalStyle = createGlobalStyle`
   p, h1, h2, h3, h4, h5, h6 {
 	  margin: 0;
    }
-  h5 {
+  /* h5 {
 	  font-size: 1.625rem;
   }
   p {
 	  font-size: 1.5rem;
-  }
+  } */
 `;
 
 const theme = {

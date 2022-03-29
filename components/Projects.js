@@ -121,7 +121,7 @@ const Card = ({ id, name, bullets, description }) => {
 	);
 };
 
-export const ProjectCards = () => {
+export const Projects = () => {
 	return (
 		<Cards id="work">
 			{PROJECTS.map((project) => (

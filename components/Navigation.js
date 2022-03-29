@@ -87,38 +87,38 @@ const MobileLinks = styled.div`
 // 	position: absolute;
 // `;
 
-const ProjectMenu = styled.div`
-	background-color: white;
-	display: flex;
-	flex-direction: column;
-	justify-content: space-between;
-	gap: 1rem;
-	padding: 1rem;
-	border: 1px solid rgba(0, 0, 0, 0.05);
-	border-radius: var(--radius);
-	-webkit-box-shadow: 10px 10px 11px -2px rgba(0, 0, 0, 0.39);
-	box-shadow: 10px 10px 11px -2px rgba(0, 0, 0, 0.39);
-`;
+// const ProjectMenu = styled.div`
+// 	background-color: white;
+// 	display: flex;
+// 	flex-direction: column;
+// 	justify-content: space-between;
+// 	gap: 1rem;
+// 	padding: 1rem;
+// 	border: 1px solid rgba(0, 0, 0, 0.05);
+// 	border-radius: var(--radius);
+// 	-webkit-box-shadow: 10px 10px 11px -2px rgba(0, 0, 0, 0.39);
+// 	box-shadow: 10px 10px 11px -2px rgba(0, 0, 0, 0.39);
+// `;
 
-const ProjectMenuItem = styled.div`
-	display: flex;
-	font-size: 1rem;
-	gap: 0.5rem;
-`;
+// const ProjectMenuItem = styled.div`
+// 	display: flex;
+// 	font-size: 1rem;
+// 	gap: 0.5rem;
+// `;
 
-const ProjectMenuLink = styled(Link)`
-	display: flex;
-	justify-content: space-between;
-`;
+// const ProjectMenuLink = styled(Link)`
+// 	display: flex;
+// 	justify-content: space-between;
+// `;
 
-const projectLinks = [
-	{ label: "LinkedIn Features", value: 0 },
-	{ label: "Planta App Redesign", value: 1 },
-	{ label: "Pasha Pear", value: 2 },
-	{ label: "M____", value: 3 },
-	{ label: "Etc.", value: 4 },
-	{ label: "Photography", value: 5 }
-];
+// const projectLinks = [
+// 	{ label: "LinkedIn Features", value: 0 },
+// 	{ label: "Planta App Redesign", value: 1 },
+// 	{ label: "Pasha Pear", value: 2 },
+// 	{ label: "M____", value: 3 },
+// 	{ label: "Etc.", value: 4 },
+// 	{ label: "Photography", value: 5 }
+// ];
 
 const HOME_ROUTE = "#home";
 const WORK_ROUTE = "#work";
