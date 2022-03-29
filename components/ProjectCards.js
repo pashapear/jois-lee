@@ -44,18 +44,20 @@ const CardWrapper = styled.div`
 	display: grid;
 	grid-template-rows: 1fr 1fr;
 	border: 2px solid black;
-	border-radius: var(--radius);
+	border-radius: var(--radius-l);
 `;
 const CardImage = styled.div`
-	background-color: lightcyan;
+	background-color: lightcoral;
+	border-radius: var(--radius-l) var(--radius-l) 0 0;
 `;
 const CardContent = styled.div`
 	padding: 2rem;
 	display: grid;
-	gap: 0.5rem;
+	column-gap: 1rem;
+	justify-content: center;
 	grid-template-columns: ${({ isMobile }) =>
 		isMobile ? "1fr 3fr" : "1fr 4fr 1fr"};
-	grid-template-rows: repeat(3, 1fr);
+	grid-template-rows: repeat(3, auto);
 	grid-template-areas: ${({ isMobile }) => {
 		if (isMobile) {
 			return `"index title"
@@ -86,7 +88,7 @@ const CardDescription = styled.p`
 `;
 const CardIndex = styled.h1`
 	grid-area: index;
-	font-size: 10rem;
+	font-size: ${({ isMobile }) => (isMobile ? "5rem" : "10rem")};
 	font-family: "Poppins", sans-serif;
 `;
 const CardButtons = styled.div`
@@ -109,10 +111,10 @@ const Card = ({ id, name, bullets, description }) => {
 					))}
 				</CardBullets>
 				<CardDescription>{description}</CardDescription>
-				<CardIndex>0{id}</CardIndex>
+				<CardIndex isMobile={isMobile}>0{id}</CardIndex>
 				<CardButtons>
 					<BlackButton>Read more</BlackButton>
-					<ClearButton>Download full case study</ClearButton>
+					{!isMobile && <ClearButton>Download full case study</ClearButton>}
 				</CardButtons>
 			</CardContent>
 		</CardWrapper>
