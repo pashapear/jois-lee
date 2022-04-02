@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import useIsMobile from "../hooks/useIsMobile";
-import { BlackButton, ClearButton } from "./Button";
+import { BlackButton, ClearButton } from "../components/Button";
 
 const PROJECTS = [
 	{

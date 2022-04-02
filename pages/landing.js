@@ -1,7 +1,7 @@
 import styled from "styled-components";
-import { BlackButton, ClearButton } from "./Button";
+import { BlackButton, ClearButton } from "../components/Button";
 import Link from "next/link";
-import { ABOUT_ROUTE, WORK_ROUTE } from "./Navigation";
+import { ABOUT_ROUTE, WORK_ROUTE } from "../components/Navigation";
 import useIsMobile from "../hooks/useIsMobile";
 
 const LandingWrapper = styled.div`

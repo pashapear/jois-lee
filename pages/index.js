@@ -1,8 +1,8 @@
 import styled from "styled-components";
 import useIsMobile from "../hooks/useIsMobile";
-// import Link from "next/link";
-import { Projects } from "../components/Projects";
-import { LandingPage } from "../components/LandingPage";
+import { Projects } from "./projects";
+import { LandingPage } from "./landing";
+import { Logos } from "./logos";
 
 const Wrapper = styled.div`
 	display: flex;
@@ -16,6 +16,7 @@ export default function Home() {
 		<Wrapper isMobile={isMobile}>
 			<LandingPage />
 			<Projects />
+			<Logos />
 		</Wrapper>
 	);
 }
