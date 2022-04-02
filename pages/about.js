@@ -10,11 +10,9 @@ import {
 	Title
 } from "../components/common";
 
-const AboutPage = styled.div`
-	width: 100%;
+const AboutPage = styled(PageContent)`
 	display: flex;
 	justify-content: center;
-	padding-bottom: 5rem;
 `;
 
 const Content = styled.div`
@@ -108,7 +106,7 @@ export default function About() {
 					</Title>
 					<Section>When I’m not working, you can find me...</Section>
 				</TitleSection>
-				<List isMobile={isMobile}>
+				<List style={{ gap: "5rem" }} isMobile={isMobile}>
 					{hobbies.map((item, i) => (
 						<Item
 							style={{ gap: !isMobile ? "5rem" : "2rem" }}
@@ -117,7 +115,7 @@ export default function About() {
 						>
 							<ItemImage
 								style={{
-									justifyContent: !isMobile ? "flex-end" : "center"
+									justifyContent: !isMobile ? "center" : "center"
 								}}
 							>
 								<Image

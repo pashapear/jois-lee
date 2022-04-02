@@ -8,7 +8,6 @@ import About from "./about";
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
-	align-items: ${({ isMobile }) => (isMobile ? "flex-start" : "flex-end")};
 `;
 
 export default function Home() {

@@ -4,11 +4,17 @@ import Link from "next/link";
 import { ABOUT_ROUTE, WORK_ROUTE } from "../components/Navigation";
 import useIsMobile from "../hooks/useIsMobile";
 
-const LandingWrapper = styled.div`
+const Wrapper = styled.div`
+	display: grid;
+	grid-template-columns: ${({ isMobile }) => (isMobile ? "1fr" : "1fr 1fr")};
+	padding: 0 5vw;
+`;
+
+const InnerWrapper = styled.div`
 	display: flex;
 	flex-direction: column;
 	flex: 1;
-	max-width: 40rem;
+	max-width: 50rem;
 `;
 const Title = styled.h1`
 	max-width: 27rem;
@@ -21,6 +27,7 @@ const Blurb = styled.h2`
 	line-height: 150%;
 	margin-top: 1rem;
 	margin-bottom: 2rem;
+	max-width: 45rem;
 `;
 const Buttons = styled.div`
 	display: flex;
@@ -30,20 +37,23 @@ const Buttons = styled.div`
 export const LandingPage = () => {
 	const isMobile = useIsMobile();
 	return (
-		<LandingWrapper>
-			<Title>Jois Lee = UX Designer</Title>
-			<Blurb isMobile={isMobile}>
-				Using Empathy and Systematic thinking to create intuitive products
-				enjoyable to users
-			</Blurb>
-			<Buttons>
-				<Link href={ABOUT_ROUTE}>
-					<BlackButton onClick={() => console.log("Hi")}>Say Hi</BlackButton>
-				</Link>
-				<Link href={WORK_ROUTE}>
-					<ClearButton>Discover My Works</ClearButton>
-				</Link>
-			</Buttons>
-		</LandingWrapper>
+		<Wrapper isMobile={isMobile}>
+			{!isMobile && <div></div>}
+			<InnerWrapper>
+				<Title>Jois Lee = UX Designer</Title>
+				<Blurb isMobile={isMobile}>
+					Using Empathy and Systematic thinking to create intuitive products
+					enjoyable to users
+				</Blurb>
+				<Buttons>
+					<Link href={ABOUT_ROUTE}>
+						<BlackButton onClick={() => console.log("Hi")}>Say Hi</BlackButton>
+					</Link>
+					<Link href={WORK_ROUTE}>
+						<ClearButton>Discover My Works</ClearButton>
+					</Link>
+				</Buttons>
+			</InnerWrapper>
+		</Wrapper>
 	);
 };
