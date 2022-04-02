@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Image from "next/image";
+import useIsMobile from "../hooks/useIsMobile";
 
 const logos = [
 	{
@@ -25,23 +26,27 @@ const logos = [
 ];
 const Wrapper = styled.div`
 	padding: 5rem 0;
+	width: 100%;
 `;
 const LogosWrapper = styled.div`
-	padding: 5rem 15rem;
+	padding: ${({ isMobile }) => (isMobile ? "5rem 2.5rem" : "5rem")};
 	display: flex;
 	flex-direction: column;
+	justify-content: center;
+	align-items: center;
 	gap: 10rem;
 `;
 const LogoWrapper = styled.div`
+	max-width: ${({ isMobile }) => (isMobile ? "100%" : "50rem")};
+	flex: 1;
 	display: grid;
-	grid-template-columns: 1fr 1fr;
-	grid-template-rows: 10rem;
-	gap: 1rem;
+	grid-template-columns: ${({ isMobile }) => (isMobile ? "1fr" : "1fr 1fr")};
+	gap: ${({ isMobile }) => (isMobile ? "5rem" : "2rem")};
 `;
 const ImageWrapper = styled.div`
 	max-width: 24.375rem;
 	display: flex;
-	justify-content: flex-end;
+	justify-content: center;
 	align-items: center;
 `;
 const TextWrapper = styled.div`
@@ -51,12 +56,13 @@ const TextWrapper = styled.div`
 `;
 
 export const Logos = () => {
+	const isMobile = useIsMobile();
 	return (
 		<Wrapper id="etc">
 			<h3>Logos</h3>
-			<LogosWrapper>
+			<LogosWrapper isMobile={isMobile}>
 				{logos.map((logo, i) => (
-					<LogoWrapper>
+					<LogoWrapper isMobile={isMobile}>
 						<ImageWrapper>
 							<Image
 								alt={logo.name}
