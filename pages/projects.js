@@ -32,9 +32,10 @@ const PROJECTS = [
 			"Designed, built, and launched a fully working site for an independent business"
 	}
 ];
-const Cards = styled.div`
+const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
+	align-items: center;
 	gap: 5rem;
 	width: 100%;
 	margin-top: 45vh;
@@ -42,6 +43,7 @@ const Cards = styled.div`
 `;
 
 const CardWrapper = styled.div`
+	width: 95vw;
 	display: grid;
 	grid-template-rows: 1fr 1fr;
 	border: 2px solid black;
@@ -125,10 +127,10 @@ const Card = ({ id, name, bullets, description }) => {
 
 export const Projects = () => {
 	return (
-		<Cards id="work">
+		<Wrapper id="work">
 			{PROJECTS.map((project) => (
 				<Card key={project.id} {...project} />
 			))}
-		</Cards>
+		</Wrapper>
 	);
 };

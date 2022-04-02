@@ -3,6 +3,7 @@ import useIsMobile from "../hooks/useIsMobile";
 import { Projects } from "./projects";
 import { LandingPage } from "./landing";
 import { Logos } from "./logos";
+import About from "./about";
 
 const Wrapper = styled.div`
 	display: flex;
@@ -17,6 +18,7 @@ export default function Home() {
 			<LandingPage />
 			<Projects />
 			<Logos />
+			<About />
 		</Wrapper>
 	);
 }

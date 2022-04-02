@@ -1,6 +1,13 @@
-import styled from "styled-components";
 import Image from "next/image";
 import useIsMobile from "../hooks/useIsMobile";
+import {
+	PageContent,
+	Title,
+	List,
+	Item,
+	ItemImage,
+	ItemText
+} from "../components/common";
 
 const logos = [
 	{
@@ -24,57 +31,27 @@ const logos = [
 		text: "The Flora is a product photography studio that combined their love of photography and plants. As the product and plants can vary in color or topic, I chose to use a simple, elegant  font in black, as to not compete with the photography. In addition, the letters H and L combined creates an outline of a vase filled with  water."
 	}
 ];
-const Wrapper = styled.div`
-	padding: 5rem 0;
-	width: 100%;
-`;
-const LogosWrapper = styled.div`
-	padding: ${({ isMobile }) => (isMobile ? "5rem 2.5rem" : "5rem")};
-	display: flex;
-	flex-direction: column;
-	justify-content: center;
-	align-items: center;
-	gap: 10rem;
-`;
-const LogoWrapper = styled.div`
-	max-width: ${({ isMobile }) => (isMobile ? "100%" : "50rem")};
-	flex: 1;
-	display: grid;
-	grid-template-columns: ${({ isMobile }) => (isMobile ? "1fr" : "1fr 1fr")};
-	gap: ${({ isMobile }) => (isMobile ? "5rem" : "2rem")};
-`;
-const ImageWrapper = styled.div`
-	max-width: 24.375rem;
-	display: flex;
-	justify-content: center;
-	align-items: center;
-`;
-const TextWrapper = styled.div`
-	font-size: medium;
-	display: flex;
-	align-items: center;
-`;
 
 export const Logos = () => {
 	const isMobile = useIsMobile();
 	return (
-		<Wrapper id="etc">
-			<h3>Logos</h3>
-			<LogosWrapper isMobile={isMobile}>
+		<PageContent id="etc">
+			<Title isMobile={isMobile}>Logos</Title>
+			<List isMobile={isMobile}>
 				{logos.map((logo, i) => (
-					<LogoWrapper isMobile={isMobile}>
-						<ImageWrapper>
+					<Item isMobile={isMobile} key={logo.name}>
+						<ItemImage>
 							<Image
 								alt={logo.name}
 								src={logo.img.src}
 								width={logo.img.width}
 								height={logo.img.height}
 							/>
-						</ImageWrapper>
-						<TextWrapper>{logo.text}</TextWrapper>
-					</LogoWrapper>
+						</ItemImage>
+						<ItemText>{logo.text}</ItemText>
+					</Item>
 				))}
-			</LogosWrapper>
-		</Wrapper>
+			</List>
+		</PageContent>
 	);
 };

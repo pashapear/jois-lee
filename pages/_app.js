@@ -20,6 +20,7 @@ const GlobalStyle = createGlobalStyle`
     box-sizing: border-box;
     font-family: "Comfortaa", sans-serif;
 	font-size: 16px;
+	line-height: 1.5;
   }
   a {
 	color: black;
@@ -63,7 +64,6 @@ const PageContainer = styled.div`
 
 const PageContent = styled(motion.div)`
 	flex: 1 0 auto;
-	padding: ${({ isMobile }) => (isMobile ? "0 4vw" : "0 4vw")};
 	font-size: ${({ isMobile }) => (isMobile ? "1rem" : "2rem")};
 `;
 
