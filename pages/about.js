@@ -7,12 +7,14 @@ import {
 	Item,
 	ItemImage,
 	ItemText,
-	Title
+	Title,
+	TitleSection
 } from "../components/common";
 
 const AboutPage = styled(PageContent)`
 	display: flex;
 	justify-content: center;
+	margin-bottom: 10rem;
 `;
 
 const Content = styled.div`
@@ -33,9 +35,6 @@ const Section = styled.div`
 const AlterEgo = styled(PageContent)`
 	background-color: black;
 	color: white;
-`;
-const TitleSection = styled.div`
-	padding-left: ${({ isMobile }) => (isMobile ? "5vw" : "20vw")};
 `;
 
 const hobbies = [
@@ -115,7 +114,7 @@ export default function About() {
 						>
 							<ItemImage
 								style={{
-									justifyContent: !isMobile ? "center" : "center"
+									width: !isMobile ? "25rem" : "unset"
 								}}
 							>
 								<Image

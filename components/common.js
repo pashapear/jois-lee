@@ -3,6 +3,9 @@ export const PageContent = styled.div`
 	padding: 5rem 0;
 	width: 100%;
 `;
+export const TitleSection = styled.div`
+	padding-left: ${({ isMobile }) => (isMobile ? "5vw" : "20vw")};
+`;
 export const Title = styled.h5`
 	font-size: ${({ isMobile }) => (isMobile ? "x-large" : "unset")};
 	padding-left: 5vw;
@@ -23,7 +26,6 @@ export const Item = styled.div`
 	gap: ${({ isMobile }) => (isMobile ? "5rem" : "2rem")};
 `;
 export const ItemImage = styled.div`
-	max-width: 24.375rem;
 	display: flex;
 	justify-content: center;
 	align-items: center;

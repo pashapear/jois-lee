@@ -6,7 +6,8 @@ import {
 	List,
 	Item,
 	ItemImage,
-	ItemText
+	ItemText,
+	TitleSection
 } from "../components/common";
 
 const logos = [
@@ -36,7 +37,9 @@ export const Logos = () => {
 	const isMobile = useIsMobile();
 	return (
 		<PageContent id="etc">
-			<Title isMobile={isMobile}>Logos</Title>
+			<TitleSection isMobile={isMobile}>
+				<Title isMobile={isMobile}>Logos</Title>
+			</TitleSection>
 			<List isMobile={isMobile}>
 				{logos.map((logo, i) => (
 					<Item isMobile={isMobile} key={logo.name}>
