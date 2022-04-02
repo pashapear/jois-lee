@@ -73,6 +73,7 @@ const CardContent = styled.div`
 `;
 const CardTitle = styled.h3`
 	grid-area: title;
+	margin-bottom: 0.75rem;
 `;
 const CardBullets = styled.div`
 	grid-area: bullets;

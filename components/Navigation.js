@@ -2,7 +2,7 @@ import React from "react";
 import styled, { keyframes } from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
-import { MenuButton } from "./MenuButton";
+import { Twirl as MenuButton } from "hamburger-react";
 import useIsMobile from "../hooks/useIsMobile";
 import { motion, AnimatePresence } from "framer-motion";
 
@@ -24,6 +24,9 @@ const NavBar = styled.nav`
 	align-items: center;
 	width: auto;
 	padding: 4vh 4vw;
+`;
+const MobileNavBar = styled(NavBar)`
+	justify-content: flex-end;
 `;
 const Logo = styled.img`
 	height: ${LOGO_SIZE}vh;
@@ -69,11 +72,6 @@ const MobileMenu = styled(motion.div)`
 	flex-direction: column;
 	align-items: center;
 `;
-const MobileNavBar = styled(NavBar)`
-	display: flex;
-	justify-content: flex-end;
-	width: 92vw;
-`;
 const MobileLinks = styled.div`
 	padding-top: 25vh;
 	flex: 1;
@@ -81,6 +79,10 @@ const MobileLinks = styled.div`
 	flex-direction: column;
 	align-items: center;
 	gap: 4rem;
+`;
+
+const MenuButtonWrapper = styled.div`
+	z-index: 1;
 `;
 
 // const ProjectMenuForceField = styled.div`
@@ -120,11 +122,11 @@ const MobileLinks = styled.div`
 // 	{ label: "Photography", value: 5 }
 // ];
 
-const HOME_ROUTE = "#home";
-const WORK_ROUTE = "#work";
-const ABOUT_ROUTE = "#about";
-const ETC_ROUTE = "#etc";
-const CONTACT_ROUTE = "#contact";
+export const HOME_ROUTE = "#home";
+export const WORK_ROUTE = "#work";
+export const ABOUT_ROUTE = "#about";
+export const ETC_ROUTE = "#etc";
+export const CONTACT_ROUTE = "#contact";
 
 const NavBarContext = React.createContext({ setOpen: () => {} });
 
@@ -161,38 +163,42 @@ const NavLogo = () => {
 export default function Navigation() {
 	const isMobile = useIsMobile();
 	const [isOpen, setOpen] = React.useState(false);
-	const [showProjectMenu, setShowProjectMenu] = React.useState(false);
-	const [menuPosition, setMenuPosition] = React.useState(null);
+	// const [showProjectMenu, setShowProjectMenu] = React.useState(false);
+	// const [menuPosition, setMenuPosition] = React.useState(null);
 	const [overMenu, setOverMenu] = React.useState(false);
 	const rootRef = React.useRef(null);
-	const menuRef = React.useRef(null);
+	// const menuRef = React.useRef(null);
 
-	React.useEffect(() => {
-		if (rootRef.current) {
-			rootRef.current.onmouseenter = () => setShowProjectMenu(true);
-			rootRef.current.onmouseleave = () =>
-				setTimeout(
-					(viewingMenu) => !viewingMenu && setShowProjectMenu(false),
-					1000,
-					overMenu
-				);
-			const { left, bottom, right } = rootRef.current.getBoundingClientRect();
-			setMenuPosition({
-				left,
-				bottom,
-				right
-			});
-		}
-	}, [rootRef.current]);
+	// React.useEffect(() => {
+	// 	setInterval(() => setOpen((prev) => !prev), 2000);
+	// }, []);
 
-	React.useEffect(() => {
-		if (menuRef.current) {
-			menuRef.current.onmouseenter = () => setOverMenu(true);
-			menuRef.current.onmouseleave = () => {
-				setShowProjectMenu(false);
-			};
-		}
-	}, [menuRef.current, showProjectMenu]);
+	// React.useEffect(() => {
+	// 	if (rootRef.current) {
+	// 		rootRef.current.onmouseenter = () => setShowProjectMenu(true);
+	// 		rootRef.current.onmouseleave = () =>
+	// 			setTimeout(
+	// 				(viewingMenu) => !viewingMenu && setShowProjectMenu(false),
+	// 				1000,
+	// 				overMenu
+	// 			);
+	// 		const { left, bottom, right } = rootRef.current.getBoundingClientRect();
+	// 		setMenuPosition({
+	// 			left,
+	// 			bottom,
+	// 			right
+	// 		});
+	// 	}
+	// }, [rootRef.current]);
+
+	// React.useEffect(() => {
+	// 	if (menuRef.current) {
+	// 		menuRef.current.onmouseenter = () => setOverMenu(true);
+	// 		menuRef.current.onmouseleave = () => {
+	// 			setShowProjectMenu(false);
+	// 		};
+	// 	}
+	// }, [menuRef.current, showProjectMenu]);
 
 	React.useEffect(() => {
 		if (!isMobile) setOpen(false);
@@ -204,11 +210,12 @@ export default function Navigation() {
 				<NavBar id="home">
 					<NavLogo />
 					{isMobile ? (
-						<MenuButton
-							isOpen={isOpen}
-							onClick={() => setOpen(!isOpen)}
-							transition={{ type: "spring", stiffness: 260, damping: 20 }}
-						/>
+						<MenuButtonWrapper>
+							<MenuButton
+								toggled={isOpen}
+								onToggle={() => setOpen((prev) => !prev)}
+							/>
+						</MenuButtonWrapper>
 					) : (
 						<>
 							<Links>
@@ -226,20 +233,12 @@ export default function Navigation() {
 							</Links>
 						</>
 					)}
-
 					{isOpen && (
 						<MobileMenu
 							initial={{ opacity: 0 }}
 							animate={{ opacity: 1 }}
 							exit={{ opacity: 0 }}
 						>
-							<MobileNavBar>
-								<MenuButton
-									isOpen={isOpen}
-									onClick={() => setOpen(!isOpen)}
-									transition={{ type: "spring", stiffness: 260, damping: 20 }}
-								/>
-							</MobileNavBar>
 							<MobileLinks>
 								<MobileLink name="work" route={WORK_ROUTE} />
 								<MobileLink name="about" route={ABOUT_ROUTE} />
