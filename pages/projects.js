@@ -38,6 +38,7 @@ const Cards = styled.div`
 	gap: 5rem;
 	width: 100%;
 	margin-top: 45vh;
+	padding: 5rem 0;
 `;
 
 const CardWrapper = styled.div`
