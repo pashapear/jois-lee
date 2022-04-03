@@ -108,14 +108,17 @@ export default function About() {
 				<List style={{ gap: "5rem" }} isMobile={isMobile}>
 					{hobbies.map((item, i) => (
 						<Item
-							style={{ gap: !isMobile ? "5rem" : "2rem" }}
+							style={{
+								gap: !isMobile ? "0.25rem" : "2rem",
+								gridTemplateColumns: isMobile ? "1fr" : "20rem 30rem"
+							}}
 							isMobile={isMobile}
 							key={item.name}
 						>
 							<ItemImage
-								style={{
-									width: !isMobile ? "25rem" : "unset"
-								}}
+							// style={{
+							// 	width: !isMobile ? "25rem" : "unset"
+							// }}
 							>
 								<Image
 									alt={item.name}

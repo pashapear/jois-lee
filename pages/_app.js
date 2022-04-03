@@ -27,16 +27,15 @@ const GlobalStyle = createGlobalStyle`
 	text-decoration: none;
   }
   button {
-	/* font-family: 'Poppins', sans-serif; */
 	font-size: 1rem;
-	/* :hover {
+	:hover {
 		transform: scale(0.975);
-	} */
+	}
 
-	/* :active {
+	:active {
 		transform: scale(0.95);
 	}
-	transition: transform 100ms; */
+	transition: transform 100ms;
   }
   p, h1, h2, h3, h4, h5, h6 {
 	  margin: 0;
