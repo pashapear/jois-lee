@@ -7,7 +7,7 @@ import { motion, AnimatePresence } from "framer-motion";
 
 const GlobalStyle = createGlobalStyle`
   :root {
-    --primary: #0d6397;
+	--blue: #2A66BC;
 	--radius: 0.75rem;
 	--radius-l: 1.25rem;
   }
@@ -31,7 +31,20 @@ const GlobalStyle = createGlobalStyle`
   }
   p, h1, h2, h3, h4, h5, h6 {
 	  margin: 0;
+	  padding: 0;
    }
+  h2 { 
+	  font-size: x-large;
+	}
+  h3 { 
+	  font-size: large;
+	}
+  p, ol, ul {
+	   font-size: medium;
+	}
+  ol, ul {
+	padding-inline-start: 1.5rem;
+    }
 `;
 
 const theme = {

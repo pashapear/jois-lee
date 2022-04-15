@@ -1,7 +1,13 @@
+import React from "react";
 import styled from "styled-components";
 import useIsMobile from "../hooks/useIsMobile";
 import { BlackButton, ClearButton } from "../components/Button";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
+import {
+	LinkedInContent,
+	PashaContent,
+	PlantaContent
+} from "../components/ExpandedCardContent";
 
 const PROJECTS = [
 	{
@@ -9,21 +15,24 @@ const PROJECTS = [
 		name: "LinkedIn Features",
 		bullets: ["UX Research", "UX Design"],
 		description:
-			"Making the search for jobs and candidates as smooth and fair as possible for both end users"
+			"Making the search for jobs and candidates as smooth and fair as possible for both end users",
+		content: LinkedInContent
 	},
 	{
 		id: 2,
 		name: "Planta App Redesign",
 		bullets: ["UX Research", "UI Design", "UX Design"],
 		description:
-			"Reimagining Planta, a mobile plant care app by designing features for a holistic user experience"
+			"Reimagining Planta, a mobile plant care app by designing features for a holistic user experience",
+		content: PlantaContent
 	},
 	{
 		id: 3,
 		name: "Pasha Pear",
 		bullets: ["Art Direction", "Illustration", "Photography"],
 		description:
-			"With their music as inspiration, I dialed in the visual direction for an independent musician"
+			"With their music as inspiration, I dialed in the visual direction for an independent musician",
+		content: PashaContent
 	},
 	{
 		id: 4,
@@ -45,13 +54,14 @@ const Wrapper = styled.div`
 
 const CardWrapper = styled(motion.div)`
 	width: 95vw;
-	display: grid;
-	grid-template-rows: 1fr 1fr;
+	display: flex;
+	flex-direction: column;
 	border: 2px solid black;
 	border-radius: var(--radius-l);
 `;
 const CardImage = styled.div`
-	background-color: lightcoral;
+	height: 15rem;
+	background-color: lightgreen;
 	border-radius: var(--radius-l) var(--radius-l) 0 0;
 `;
 const CardContent = styled.div`
@@ -75,7 +85,7 @@ const CardContent = styled.div`
 		}
 	}};
 `;
-const CardTitle = styled.h3`
+const CardTitle = styled.h2`
 	grid-area: title;
 	margin-bottom: 0.75rem;
 `;
@@ -103,8 +113,16 @@ const CardButtons = styled.div`
 	gap: 1rem;
 `;
 
-const Card = ({ id, name, bullets, description }) => {
+const ExpandedContentWrapper = styled.div`
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 5rem;
+`;
+
+const Card = ({ id, name, bullets, description, content: ExpandedContent }) => {
 	const isMobile = useIsMobile();
+	const [expanded, setExpanded] = React.useState(false);
 	// const { scrollYProgress } = useViewportScroll();
 	// const scale = useTransform(scrollYProgress, [0, 0.05], [0.5, 1]);
 	return (
@@ -123,10 +141,24 @@ const Card = ({ id, name, bullets, description }) => {
 				</CardBullets>
 				<CardDescription>{description}</CardDescription>
 				<CardIndex isMobile={isMobile}>0{id}</CardIndex>
-				<CardButtons>
-					<BlackButton>Read more</BlackButton>
-					{!isMobile && <ClearButton>Download full case study</ClearButton>}
-				</CardButtons>
+				{!expanded ? (
+					<CardButtons>
+						<BlackButton onClick={() => setExpanded(true)}>
+							Read more
+						</BlackButton>
+						{!isMobile && <ClearButton>Download full case study</ClearButton>}
+					</CardButtons>
+				) : (
+					<ExpandedContentWrapper>
+						<ExpandedContent />
+						<CardButtons>
+							<BlackButton onClick={() => setExpanded(false)}>
+								Read less
+							</BlackButton>
+							{!isMobile && <ClearButton>Download full case study</ClearButton>}
+						</CardButtons>
+					</ExpandedContentWrapper>
+				)}
 			</CardContent>
 		</CardWrapper>
 	);
