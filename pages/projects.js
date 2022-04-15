@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import useIsMobile from "../hooks/useIsMobile";
 import { BlackButton, ClearButton } from "../components/Button";
+import { motion, useViewportScroll, useTransform } from "framer-motion";
 
 const PROJECTS = [
 	{
@@ -42,7 +43,7 @@ const Wrapper = styled.div`
 	padding: 5rem 0;
 `;
 
-const CardWrapper = styled.div`
+const CardWrapper = styled(motion.div)`
 	width: 95vw;
 	display: grid;
 	grid-template-rows: 1fr 1fr;
@@ -104,8 +105,14 @@ const CardButtons = styled.div`
 
 const Card = ({ id, name, bullets, description }) => {
 	const isMobile = useIsMobile();
+	// const { scrollYProgress } = useViewportScroll();
+	// const scale = useTransform(scrollYProgress, [0, 0.05], [0.5, 1]);
 	return (
-		<CardWrapper>
+		<CardWrapper
+		// style={{
+		// 	scale
+		// }}
+		>
 			<CardImage></CardImage>
 			<CardContent isMobile={isMobile}>
 				<CardTitle>{name}</CardTitle>

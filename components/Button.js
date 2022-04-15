@@ -1,6 +1,10 @@
+import { motion } from "framer-motion";
 import styled from "styled-components";
 
-export const BlackButton = styled.button`
+export const BlackButton = styled(motion.button).attrs({
+	whileHover: { scale: 1.05 },
+	whileTap: { scale: 0.95 }
+})`
 	cursor: pointer;
 	background-color: black;
 	border-radius: var(--radius);

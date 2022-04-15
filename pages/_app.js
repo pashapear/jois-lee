@@ -28,24 +28,10 @@ const GlobalStyle = createGlobalStyle`
   }
   button {
 	font-size: 1rem;
-	:hover {
-		transform: scale(0.975);
-	}
-
-	:active {
-		transform: scale(0.95);
-	}
-	transition: transform 100ms;
   }
   p, h1, h2, h3, h4, h5, h6 {
 	  margin: 0;
    }
-  /* h5 {
-	  font-size: 1.625rem;
-  }
-  p {
-	  font-size: 1.5rem;
-  } */
 `;
 
 const theme = {
@@ -54,15 +40,8 @@ const theme = {
 	}
 };
 
-const PageContainer = styled.div`
-	display: flex;
-	flex-direction: column;
-	height: 100vh;
-	width: 100vw;
-`;
-
 const PageContent = styled(motion.div)`
-	flex: 1 0 auto;
+	/* flex: 1 0 auto; */
 	font-size: ${({ isMobile }) => (isMobile ? "1rem" : "2rem")};
 `;
 
@@ -83,19 +62,17 @@ export default function App({ Component, pageProps }) {
 			</Head>
 			<GlobalStyle />
 			<ThemeProvider theme={theme}>
-				<PageContainer isMobile={isMobile}>
-					<Navigation />
-					<AnimatePresence>
-						<PageContent
-							initial={{ opacity: 0 }}
-							animate={{ opacity: 1 }}
-							exit={{ opacity: 0 }}
-							isMobile={isMobile}
-						>
-							<Component {...pageProps} />
-						</PageContent>
-					</AnimatePresence>
-				</PageContainer>
+				<Navigation />
+				<AnimatePresence>
+					<PageContent
+						initial={{ opacity: 0 }}
+						animate={{ opacity: 1 }}
+						exit={{ opacity: 0 }}
+						isMobile={isMobile}
+					>
+						<Component {...pageProps} />
+					</PageContent>
+				</AnimatePresence>
 			</ThemeProvider>
 		</>
 	);
