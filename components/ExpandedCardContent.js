@@ -24,6 +24,18 @@ const Title = styled.h3`
 	color: var(--blue);
 `;
 
+const BoldSection = styled.div`
+	padding: 0 20%;
+	display: flex;
+	flex-direction: column;
+	gap: 1.25rem;
+`;
+const BoldItem = styled.div`
+	padding-left: 2rem;
+	border-left: 7px solid black;
+	margin-bottom: 2rem;
+`;
+
 export const LinkedInContent = () => {
 	return (
 		<ExpandedCardContent>
@@ -292,6 +304,46 @@ export const MContent = () => {
 					project, but here is a list of high-level overview of what I did
 					throughout the project:
 				</p>
+			</OneCol>
+			<OneCol>
+				<BoldSection>
+					<BoldItem>
+						<h3>Creating Personas</h3>
+						<p>
+							Created personas to meet the user’s needs, experiences, behaviors
+							and goals
+						</p>
+					</BoldItem>
+				</BoldSection>
+				<BoldSection>
+					<BoldItem>
+						<h3>Mapping Out User Flows</h3>
+						<p>Mapped out end-to-end user journey</p>
+					</BoldItem>
+				</BoldSection>
+				<BoldSection>
+					<BoldItem>
+						<h3>Creating Personas</h3>
+						<p>
+							Created personas to meet the user’s needs, experiences, behaviors
+							and goals
+						</p>
+					</BoldItem>
+				</BoldSection>
+				<BoldSection>
+					<BoldItem>
+						<h3>No-Code Development</h3>
+						<p>Built and shipped fully working product</p>
+					</BoldItem>
+				</BoldSection>
+				<BoldSection>
+					<BoldItem>
+						<h3>User Testing</h3>
+						<p>
+							Once the product launched, I conducted user testing with 10 users
+						</p>
+					</BoldItem>
+				</BoldSection>
 			</OneCol>
 		</ExpandedCardContent>
 	);
