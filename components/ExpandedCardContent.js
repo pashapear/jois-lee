@@ -4,7 +4,7 @@ import styled from "styled-components";
 const ExpandedCardContent = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 1rem;
+	gap: 1.25rem;
 `;
 const TwoCol = styled.div`
 	display: grid;
@@ -250,6 +250,49 @@ export const PashaContent = () => {
 					immediately saw a rainbow xylophone fluidly rotating in space/vacuum.
 				</p>
 			</TwoCol>
+		</ExpandedCardContent>
+	);
+};
+
+export const MContent = () => {
+	return (
+		<ExpandedCardContent>
+			<TwoCol>
+				<ColContent>
+					<Section>
+						<Title>Role</Title>
+						<p>UX Designer, No-Code Developer</p>
+					</Section>
+					<Section>
+						<Title>Team</Title>
+						<p>Jois Lee</p>
+					</Section>
+					<Section>
+						<Title>Timeline</Title>
+						<p>July 2021 - October 2021</p>
+					</Section>
+				</ColContent>
+				<ColContent>
+					<Section>
+						<Title>Methods</Title>
+						<p>
+							Ideation, Personas, User Research, User journey mapping, User
+							story mapping, Prototyping, User Testing
+						</p>
+					</Section>
+					<Section>
+						<Title>Tools</Title>
+						<p>Miro, Adobe XD, Webflow</p>
+					</Section>
+				</ColContent>
+			</TwoCol>
+			<OneCol>
+				<p>
+					Due to NDA restriction, I cannot disclose all the details of this
+					project, but here is a list of high-level overview of what I did
+					throughout the project:
+				</p>
+			</OneCol>
 		</ExpandedCardContent>
 	);
 };

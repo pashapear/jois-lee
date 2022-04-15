@@ -5,6 +5,7 @@ import { BlackButton, ClearButton } from "../components/Button";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
 import {
 	LinkedInContent,
+	MContent,
 	PashaContent,
 	PlantaContent
 } from "../components/ExpandedCardContent";
@@ -39,9 +40,11 @@ const PROJECTS = [
 		name: "M____",
 		bullets: ["UX Design", "UI Design", "No-Code Dev"],
 		description:
-			"Designed, built, and launched a fully working site for an independent business"
+			"Designed, built, and launched a fully working site for an independent business",
+		content: MContent
 	}
 ];
+
 const Wrapper = styled.div`
 	display: flex;
 	flex-direction: column;
