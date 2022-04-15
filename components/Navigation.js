@@ -27,7 +27,7 @@ const NavBar = styled(motion.nav)`
 	width: auto;
 	padding: 2vh 4vw;
 	background: white;
-	/* transform: translateY(-100%); */
+	/* background: rgba(255, 255, 255, 0.8); */
 `;
 
 const Logo = styled.path`
@@ -147,12 +147,25 @@ export default function Navigation() {
 	const isMobile = useIsMobile();
 	const [isOpen, setOpen] = React.useState(false);
 	const rootRef = React.useRef(null);
-	const { scrollYProgress } = useViewportScroll();
+	const { scrollY } = useViewportScroll();
+	const [hidden, setHidden] = React.useState(false);
+
+	const update = () => {
+		if (scrollY?.current < scrollY?.prev) {
+			setHidden(false);
+		} else if (scrollY?.current > 100 && scrollY?.current > scrollY?.prev) {
+			setHidden(true);
+		}
+	};
+
+	const variants = {
+		visible: { opacity: 1, y: 0 },
+		hidden: { opacity: 0, y: -25 }
+	};
 
 	React.useEffect(() => {
-		console.log("scrollYProgress.prev", scrollYProgress.prev);
-		console.log("scrollYProgress.current", scrollYProgress.current);
-	}, [scrollYProgress]);
+		return scrollY.onChange(() => update());
+	});
 
 	React.useEffect(() => {
 		if (!isMobile) setOpen(false);
@@ -160,7 +173,12 @@ export default function Navigation() {
 
 	return (
 		<NavBarContext.Provider value={{ setOpen }}>
-			<NavBar id="home">
+			<NavBar
+				id="home"
+				variants={variants}
+				animate={hidden ? "hidden" : "visible"}
+				transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
+			>
 				<NavLogo />
 				{isMobile ? (
 					<MenuButtonWrapper>
