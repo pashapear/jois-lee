@@ -26,6 +26,7 @@ const rotate = keyframes`
 const LOGO_SIZE = 10;
 
 const NavBar = styled(motion.nav)`
+	z-index: 2;
 	position: sticky;
 	top: 0;
 	display: flex;
