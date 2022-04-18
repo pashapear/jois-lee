@@ -40,32 +40,32 @@ const AlterEgo = styled(PageContent)`
 const hobbies = [
 	{
 		name: "Podcast",
-		img: { src: "/hobbies/podcast.svg", width: 53, height: 90 },
+		img: { src: "/images/hobbies/podcast.svg", width: 53, height: 90 },
 		text: `Cohosting a podcast, “Non-Fiction Relationships”`
 	},
 	{
 		name: "Plants",
-		img: { src: "/hobbies/plants.svg", width: 64, height: 100 },
+		img: { src: "/images/hobbies/plants.svg", width: 64, height: 100 },
 		text: "Communing and caring for my plants"
 	},
 	{
 		name: "Blog",
-		img: { src: "/hobbies/blog.svg", width: 78, height: 80 },
+		img: { src: "/images/hobbies/blog.svg", width: 78, height: 80 },
 		text: "Writing poetry or my UX Blog"
 	},
 	{
 		name: "Cooking",
-		img: { src: "/hobbies/cooking.svg", width: 109, height: 110 },
+		img: { src: "/images/hobbies/cooking.svg", width: 109, height: 110 },
 		text: "Cooking for family & friends"
 	},
 	{
 		name: "Nature",
-		img: { src: "/hobbies/nature.svg", width: 83, height: 81 },
+		img: { src: "/images/hobbies/nature.svg", width: 83, height: 81 },
 		text: "Walking/hiking in nature"
 	},
 	{
 		name: "Mindfulness",
-		img: { src: "/hobbies/bath.svg", width: 100, height: 57 },
+		img: { src: "/images/hobbies/bath.svg", width: 100, height: 57 },
 		text: "Practicing mindfulness"
 	}
 ];

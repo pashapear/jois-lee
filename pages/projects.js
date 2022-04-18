@@ -17,7 +17,8 @@ const PROJECTS = [
 		bullets: ["UX Research", "UX Design"],
 		description:
 			"Making the search for jobs and candidates as smooth and fair as possible for both end users",
-		content: LinkedInContent
+		content: LinkedInContent,
+		img: { src: "/images/projects/linkedin-main", width: 320, height: 320 }
 	},
 	{
 		id: 2,
@@ -25,7 +26,8 @@ const PROJECTS = [
 		bullets: ["UX Research", "UI Design", "UX Design"],
 		description:
 			"Reimagining Planta, a mobile plant care app by designing features for a holistic user experience",
-		content: PlantaContent
+		content: PlantaContent,
+		img: { src: "/images/projects/planta-main", width: 320, height: 320 }
 	},
 	{
 		id: 3,
@@ -33,7 +35,8 @@ const PROJECTS = [
 		bullets: ["Art Direction", "Illustration", "Photography"],
 		description:
 			"With their music as inspiration, I dialed in the visual direction for an independent musician",
-		content: PashaContent
+		content: PashaContent,
+		img: { src: "/images/projects/pasha-main", width: 320, height: 320 }
 	},
 	{
 		id: 4,
@@ -41,7 +44,8 @@ const PROJECTS = [
 		bullets: ["UX Design", "UI Design", "No-Code Dev"],
 		description:
 			"Designed, built, and launched a fully working site for an independent business",
-		content: MContent
+		content: MContent,
+		img: { src: "/images/projects/m-main", width: 320, height: 320 }
 	}
 ];
 
