@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import Image from "next/image";
 import useIsMobile from "../hooks/useIsMobile";
 import { BlackButton, ClearButton } from "../components/Button";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
@@ -18,7 +19,7 @@ const PROJECTS = [
 		description:
 			"Making the search for jobs and candidates as smooth and fair as possible for both end users",
 		content: LinkedInContent,
-		img: { src: "/images/projects/linkedin-main", width: 320, height: 320 }
+		img: { src: "/images/projects/linkedin-main.jpg", width: 320, height: 320 }
 	},
 	{
 		id: 2,
@@ -27,7 +28,7 @@ const PROJECTS = [
 		description:
 			"Reimagining Planta, a mobile plant care app by designing features for a holistic user experience",
 		content: PlantaContent,
-		img: { src: "/images/projects/planta-main", width: 320, height: 320 }
+		img: { src: "/images/projects/planta-main.jpg", width: 320, height: 320 }
 	},
 	{
 		id: 3,
@@ -36,7 +37,7 @@ const PROJECTS = [
 		description:
 			"With their music as inspiration, I dialed in the visual direction for an independent musician",
 		content: PashaContent,
-		img: { src: "/images/projects/pasha-main", width: 320, height: 320 }
+		img: { src: "/images/projects/pasha-main.jpg", width: 320, height: 320 }
 	},
 	{
 		id: 4,
@@ -45,7 +46,7 @@ const PROJECTS = [
 		description:
 			"Designed, built, and launched a fully working site for an independent business",
 		content: MContent,
-		img: { src: "/images/projects/m-main", width: 320, height: 320 }
+		img: { src: "/images/projects/m-main.png", width: 1230, height: 320 }
 	}
 ];
 
@@ -66,10 +67,14 @@ const CardWrapper = styled(motion.div)`
 	border: 2px solid black;
 	border-radius: var(--radius-l);
 `;
+
 const CardImage = styled.div`
+	position: relative;
 	height: 15rem;
-	background-color: lightgreen;
-	border-radius: var(--radius-l) var(--radius-l) 0 0;
+	border-radius: var(--radius) var(--radius) 0 0;
+	overflow: hidden;
+	background: url(${({ imageUrl }) => imageUrl}) no-repeat center center;
+	background-size: cover;
 `;
 const CardContent = styled.div`
 	padding: 2rem;
@@ -127,7 +132,14 @@ const ExpandedContentWrapper = styled.div`
 	gap: 5rem;
 `;
 
-const Card = ({ id, name, bullets, description, content: ExpandedContent }) => {
+const Card = ({
+	id,
+	img,
+	name,
+	bullets,
+	description,
+	content: ExpandedContent
+}) => {
 	const isMobile = useIsMobile();
 	const [expanded, setExpanded] = React.useState(false);
 	// const { scrollYProgress } = useViewportScroll();
@@ -138,7 +150,7 @@ const Card = ({ id, name, bullets, description, content: ExpandedContent }) => {
 		// 	scale
 		// }}
 		>
-			<CardImage></CardImage>
+			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile}>
 				<CardTitle>{name}</CardTitle>
 				<CardBullets>
