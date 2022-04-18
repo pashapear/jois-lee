@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BlackButton, ClearButton } from "../components/Button";
 import Link from "next/link";
-import { ABOUT_ROUTE, WORK_ROUTE } from "../components/Navigation";
+import { ABOUT_ROUTE, WORK_ROUTE } from "../constants/routes";
 import useIsMobile from "../hooks/useIsMobile";
 
 const Wrapper = styled.div`
@@ -37,7 +37,7 @@ const Buttons = styled.div`
 export const LandingPage = () => {
 	const isMobile = useIsMobile();
 	return (
-		<Wrapper isMobile={isMobile}>
+		<Wrapper id="home" isMobile={isMobile}>
 			{!isMobile && <div></div>}
 			<InnerWrapper>
 				<Title>Jois Lee = UX Designer</Title>

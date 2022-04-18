@@ -4,7 +4,7 @@ import styled from "styled-components";
 const ExpandedCardContent = styled.div`
 	display: flex;
 	flex-direction: column;
-	gap: 1.25rem;
+	gap: 2rem;
 `;
 const TwoCol = styled.div`
 	display: grid;

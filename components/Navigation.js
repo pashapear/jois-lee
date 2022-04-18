@@ -5,6 +5,13 @@ import { useRouter } from "next/router";
 import { Twirl as MenuButton } from "hamburger-react";
 import useIsMobile from "../hooks/useIsMobile";
 import { motion, useViewportScroll, useTransform } from "framer-motion";
+import {
+	HOME_ROUTE,
+	WORK_ROUTE,
+	ETC_ROUTE,
+	ABOUT_ROUTE,
+	CONTACT_ROUTE
+} from "../constants/routes";
 
 const rotate = keyframes`
   from {
@@ -103,18 +110,11 @@ const NavIcon = () => (
 		</svg>
 	</svg>
 );
-
-export const HOME_ROUTE = "#home";
-export const WORK_ROUTE = "#work";
-export const ABOUT_ROUTE = "#about";
-export const ETC_ROUTE = "#etc";
-export const CONTACT_ROUTE = "#contact";
-
 const NavBarContext = React.createContext({ setOpen: () => {} });
 
 const NavLink = ({ name, route, isMobile }) => {
-	const router = useRouter();
 	const { setOpen } = React.useContext(NavBarContext);
+	const router = useRouter();
 	const active = router.asPath === `/${route}`;
 	return (
 		<Link href={route}>
@@ -143,10 +143,22 @@ const NavLogo = () => {
 	);
 };
 
+export const DesktopLinks = () => (
+	<>
+		<Links>
+			<div>
+				<NavLink name="work" route={WORK_ROUTE} />
+			</div>
+			<NavLink name="etc" route={ETC_ROUTE} />
+			<NavLink name="about" route={ABOUT_ROUTE} />
+			<NavLink name="contact" route={CONTACT_ROUTE} />
+		</Links>
+	</>
+);
+
 export default function Navigation() {
 	const isMobile = useIsMobile();
 	const [isOpen, setOpen] = React.useState(false);
-	const rootRef = React.useRef(null);
 	const { scrollY } = useViewportScroll();
 	const [hidden, setHidden] = React.useState(false);
 
@@ -174,7 +186,6 @@ export default function Navigation() {
 	return (
 		<NavBarContext.Provider value={{ setOpen }}>
 			<NavBar
-				id="home"
 				variants={variants}
 				animate={hidden ? "hidden" : "visible"}
 				transition={{ ease: [0.1, 0.25, 0.3, 1], duration: 0.6 }}
@@ -189,14 +200,7 @@ export default function Navigation() {
 					</MenuButtonWrapper>
 				) : (
 					<>
-						<Links>
-							<div ref={rootRef}>
-								<NavLink name="work" route={WORK_ROUTE} />
-							</div>
-							<NavLink name="etc" route={ETC_ROUTE} />
-							<NavLink name="about" route={ABOUT_ROUTE} />
-							<NavLink name="contact" route={CONTACT_ROUTE} />
-						</Links>
+						<DesktopLinks />
 						<Links>
 							<a target="#" href="https://twitter.com/joisleeux">
 								@joisleeux
