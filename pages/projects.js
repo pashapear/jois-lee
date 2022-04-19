@@ -72,12 +72,6 @@ const Wrapper = styled.div`
 	padding: 5rem 0;
 `;
 
-const spring = {
-	type: "spring",
-	stiffness: 700,
-	damping: 30
-};
-
 const MotionDiv = styled(motion.div).attrs({
 	initial: { opacity: 0 },
 	animate: { opacity: 1 },
@@ -87,6 +81,7 @@ const MotionDiv = styled(motion.div).attrs({
 const CardWrapper = styled(motion.div)`
 	position: relative;
 	width: 95vw;
+	max-width: 80rem;
 	display: flex;
 	flex-direction: column;
 	border: 2px solid black;
@@ -107,7 +102,7 @@ const CardContent = styled(MotionDiv)`
 	column-gap: 1rem;
 	justify-content: center;
 	grid-template-columns: ${({ isMobile }) =>
-		isMobile ? "1fr 3fr" : "1fr 4fr 1fr"};
+		isMobile ? "1fr 3fr" : "2fr 6fr 1fr"};
 	grid-template-rows: repeat(3, auto);
 	grid-template-areas: ${({ isMobile }) => {
 		if (isMobile) {
@@ -128,13 +123,15 @@ const CardTitle = styled.h2`
 `;
 const CardBullets = styled.div`
 	grid-area: bullets;
+	padding-top: ${({ isMobile }) => (isMobile ? 0 : "1rem")};
+	padding-left: ${({ isMobile }) => (isMobile ? 0 : "2rem")};
 `;
 const CardBullet = styled.p`
 	font-size: medium;
 `;
 const CardDescription = styled.p`
 	grid-area: description;
-	max-width: 50rem;
+	max-width: 35rem;
 	margin-bottom: 1rem;
 	font-size: large;
 `;
@@ -142,6 +139,7 @@ const CardIndex = styled.h1`
 	grid-area: index;
 	font-size: ${({ isMobile }) => (isMobile ? "5rem" : "10rem")};
 	font-family: "Poppins", sans-serif;
+	padding-right: ${({ isMobile }) => (isMobile ? "0" : "5rem")};
 `;
 
 const CardButtons = styled(MotionDiv)`
@@ -187,7 +185,7 @@ const Card = ({
 			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile}>
 				<CardTitle>{name}</CardTitle>
-				<CardBullets>
+				<CardBullets isMobile={isMobile}>
 					{bullets.map((bullet) => (
 						<CardBullet>{bullet}</CardBullet>
 					))}
