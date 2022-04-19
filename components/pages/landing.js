@@ -1,8 +1,8 @@
 import styled from "styled-components";
-import { BlackButton, ClearButton } from "../components/Button";
+import { BlackButton, ClearButton } from "../Button";
 import Link from "next/link";
-import { CONTACT_ROUTE, WORK_ROUTE } from "../constants/routes";
-import useIsMobile from "../hooks/useIsMobile";
+import { CONTACT_ROUTE, WORK_ROUTE } from "../../constants/routes";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const Wrapper = styled.div`
 	display: grid;

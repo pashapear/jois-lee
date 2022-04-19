@@ -1,5 +1,5 @@
 import Image from "next/image";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../../hooks/useIsMobile";
 import {
 	PageContent,
 	Title,
@@ -8,7 +8,7 @@ import {
 	ItemImage,
 	ItemText,
 	TitleSection
-} from "../components/common";
+} from "../common";
 
 const logos = [
 	{

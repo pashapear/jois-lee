@@ -1,6 +1,6 @@
 import styled, { keyframes } from "styled-components";
 import Image from "next/image";
-import useIsMobile from "../hooks/useIsMobile";
+import useIsMobile from "../../hooks/useIsMobile";
 import {
 	PageContent,
 	List,
@@ -9,7 +9,7 @@ import {
 	ItemText,
 	Title,
 	TitleSection
-} from "../components/common";
+} from "../common";
 
 const rotate = keyframes`
   from {

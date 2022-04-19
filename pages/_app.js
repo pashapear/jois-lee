@@ -58,11 +58,6 @@ const PageContent = styled(motion.div)`
 	font-size: ${({ isMobile }) => (isMobile ? "1rem" : "2rem")};
 `;
 
-const list = {
-	visible: { opacity: 1 },
-	hidden: { opacity: 0 }
-};
-
 export default function App({ Component, pageProps }) {
 	const isMobile = useIsMobile();
 	return (
