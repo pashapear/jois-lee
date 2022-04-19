@@ -72,7 +72,20 @@ const Wrapper = styled.div`
 	padding: 5rem 0;
 `;
 
+const spring = {
+	type: "spring",
+	stiffness: 700,
+	damping: 30
+};
+
+const MotionDiv = styled(motion.div).attrs({
+	initial: { opacity: 0 },
+	animate: { opacity: 1 },
+	exit: { opacity: 0 }
+})``;
+
 const CardWrapper = styled(motion.div)`
+	position: relative;
 	width: 95vw;
 	display: flex;
 	flex-direction: column;
@@ -80,7 +93,7 @@ const CardWrapper = styled(motion.div)`
 	border-radius: var(--radius-l);
 `;
 
-const CardImage = styled.div`
+const CardImage = styled(motion.div)`
 	position: relative;
 	height: 15rem;
 	border-radius: var(--radius) var(--radius) 0 0;
@@ -88,7 +101,7 @@ const CardImage = styled.div`
 	background: url(${({ imageUrl }) => imageUrl}) no-repeat center center;
 	background-size: cover;
 `;
-const CardContent = styled.div`
+const CardContent = styled(MotionDiv)`
 	padding: 2rem;
 	display: grid;
 	column-gap: 1rem;
@@ -130,14 +143,15 @@ const CardIndex = styled.h1`
 	font-size: ${({ isMobile }) => (isMobile ? "5rem" : "10rem")};
 	font-family: "Poppins", sans-serif;
 `;
-const CardButtons = styled.div`
+
+const CardButtons = styled(MotionDiv)`
 	grid-area: buttons;
 	display: flex;
 	max-height: 2.375rem;
 	gap: 1rem;
 `;
 
-const ExpandedContentWrapper = styled.div`
+const ExpandedContentWrapper = styled(MotionDiv)`
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -155,15 +169,19 @@ const Card = ({
 }) => {
 	const isMobile = useIsMobile();
 	const [expanded, setExpanded] = React.useState(false);
-	const imageRef = React.useRef(null);
+	const scrollRef = React.useRef(null);
 
 	React.useEffect(() => {
-		if (!expanded) imageRef.current.scrollIntoView({ behavior: "smooth" });
+		if (!expanded) scrollRef.current.scrollIntoView();
 	}, [expanded]);
 
 	return (
 		<CardWrapper>
-			<CardImage ref={imageRef} imageUrl={img.src} />
+			<div
+				style={{ position: "absolute", top: "-200px", left: "50%" }}
+				ref={scrollRef}
+			></div>
+			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile}>
 				<CardTitle>{name}</CardTitle>
 				<CardBullets>
