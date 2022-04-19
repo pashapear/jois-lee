@@ -10,9 +10,16 @@ const TwoCol = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
 	gap: 1rem;
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
 `;
 const TwoColTwoOne = styled(TwoCol)`
 	grid-template-columns: 2fr 1fr;
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
 `;
 const ColContent = styled.div`
 	display: flex;
