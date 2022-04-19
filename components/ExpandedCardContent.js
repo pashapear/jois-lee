@@ -20,7 +20,9 @@ const ColContent = styled.div`
 	gap: 1rem;
 `;
 const OneCol = styled.div``;
-const Section = styled.div``;
+const Section = styled.div`
+	max-width: 20rem;
+`;
 const Title = styled.h3`
 	color: var(--blue);
 `;
@@ -104,10 +106,7 @@ export const LinkedInContent = () => {
 						hiring process.
 					</p>
 				</div>
-				<Image
-					src="/images/projects/linkedin-1.jpg"
-					style={{ width: "100%" }}
-				/>
+				<Image src="/images/projects/linkedin-1.jpg" />
 			</TwoCol>
 			<TwoCol>
 				<div>
@@ -118,10 +117,7 @@ export const LinkedInContent = () => {
 						recruiters time and candidates endless waiting.
 					</p>
 				</div>
-				<Image
-					src="/images/projects/linkedin-2.jpg"
-					style={{ width: "100%" }}
-				/>
+				<Image src="/images/projects/linkedin-2.jpg" />
 			</TwoCol>
 			<TwoCol>
 				<div>
@@ -133,10 +129,7 @@ export const LinkedInContent = () => {
 						transitioning a candidate.
 					</p>
 				</div>
-				<Image
-					src="/images/projects/linkedin-3.jpg"
-					style={{ width: "100%" }}
-				/>
+				<Image src="/images/projects/linkedin-3.jpg" />
 			</TwoCol>
 		</ExpandedCardContent>
 	);
@@ -206,7 +199,7 @@ export const PlantaContent = () => {
 						to arrange a pick up.
 					</p>
 				</div>
-				<div>[IMAGE]</div>
+				<Image src="/images/projects/planta-1.jpg" />
 			</TwoColTwoOne>
 			<TwoColTwoOne>
 				<div>
@@ -221,7 +214,7 @@ export const PlantaContent = () => {
 						app.
 					</p>
 				</div>
-				<div>[IMAGE]</div>
+				<Image src="/images/projects/planta-2.jpg" />
 			</TwoColTwoOne>
 		</ExpandedCardContent>
 	);
@@ -257,7 +250,7 @@ export const PashaContent = () => {
 				</ColContent>
 			</TwoCol>
 			<TwoCol>
-				<div>[IMAGE]</div>
+				<Image src="/images/projects/pasha-1.jpg" />
 				<p>
 					I chose a field of blue flowers in the woods to represent the feeling
 					of innocence and beauty with a hint of darkness. I titled this piece,
@@ -269,7 +262,7 @@ export const PashaContent = () => {
 				</p>
 			</TwoCol>
 			<TwoCol>
-				<div>[IMAGE]</div>
+				<Image src="/images/projects/pasha-2.jpg" />
 				<p>
 					When listening to the song, ”Technological unemployment”, I
 					immediately saw a rainbow xylophone fluidly rotating in space/vacuum.
