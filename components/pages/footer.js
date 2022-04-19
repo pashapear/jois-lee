@@ -1,8 +1,8 @@
 import React from "react";
 import styled from "styled-components";
-import { DesktopLinks } from "../components/Navigation";
-import { PageContent } from "../components/common";
-import useIsMobile from "../hooks/useIsMobile";
+import { DesktopLinks } from "../Navigation";
+import { PageContent } from "../common";
+import useIsMobile from "../../hooks/useIsMobile";
 
 const FooterWrapper = styled(PageContent)`
 	display: flex;

@@ -1,10 +1,10 @@
 import React from "react";
-import styled, { keyframes } from "styled-components";
+import styled from "styled-components";
 import Link from "next/link";
 import { useRouter } from "next/router";
 import { Twirl as MenuButton } from "hamburger-react";
 import useIsMobile from "../hooks/useIsMobile";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import { motion, useViewportScroll } from "framer-motion";
 import {
 	HOME_ROUTE,
 	WORK_ROUTE,
@@ -12,18 +12,6 @@ import {
 	ABOUT_ROUTE,
 	CONTACT_ROUTE
 } from "../constants/routes";
-
-const rotate = keyframes`
-  from {
-    transform: rotateZ(0deg);
-  }
-
-  to {
-    transform: rotateZ(-360deg);
-  }
-`;
-
-const LOGO_SIZE = 10;
 
 const NavBar = styled(motion.nav)`
 	z-index: 2;
@@ -35,14 +23,8 @@ const NavBar = styled(motion.nav)`
 	width: auto;
 	padding: 2vh 4vw;
 	background: white;
-	/* background: rgba(255, 255, 255, 0.8); */
 `;
 
-const Logo = styled.path`
-	height: ${LOGO_SIZE}vh;
-	cursor: pointer;
-	animation: ${rotate} 28s linear infinite;
-`;
 const Links = styled.div`
 	display: flex;
 	align-items: flex-start;

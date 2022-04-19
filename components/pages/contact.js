@@ -1,8 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-import useIsMobile from "../hooks/useIsMobile";
-import { CONTACT_ROUTE } from "../constants/routes";
-import { PageContent } from "../components/common";
+import useIsMobile from "../../hooks/useIsMobile";
+import { PageContent } from "../common";
 
 const Wrapper = styled(PageContent)`
 	display: flex;

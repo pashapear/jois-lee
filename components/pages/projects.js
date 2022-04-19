@@ -1,15 +1,14 @@
 import React from "react";
 import styled from "styled-components";
-import Image from "next/image";
-import useIsMobile from "../hooks/useIsMobile";
-import { BlackButton, ClearButton } from "../components/Button";
-import { motion, useViewportScroll, useTransform } from "framer-motion";
+import useIsMobile from "../../hooks/useIsMobile";
+import { BlackButton, ClearButton } from "../Button";
+import { motion } from "framer-motion";
 import {
 	LinkedInContent,
 	MContent,
 	PashaContent,
 	PlantaContent
-} from "../components/ExpandedCardContent";
+} from "../ExpandedCardContent";
 
 const DownloadButton = () => {
 	const isMobile = useIsMobile();
@@ -175,10 +174,6 @@ const Card = ({
 	const [expanded, setExpanded] = React.useState(false);
 	const scrollRef = React.useRef(null);
 
-	React.useEffect(() => {
-		if (!expanded) scrollRef.current.scrollIntoView();
-	}, [expanded]);
-
 	return (
 		<CardWrapper>
 			<ScrollTarget ref={scrollRef}></ScrollTarget>
@@ -186,8 +181,8 @@ const Card = ({
 			<CardContent isMobile={isMobile}>
 				<CardTitle>{name}</CardTitle>
 				<CardBullets isMobile={isMobile}>
-					{bullets.map((bullet) => (
-						<CardBullet>{bullet}</CardBullet>
+					{bullets.map((bullet, idx) => (
+						<CardBullet key={idx}>{bullet}</CardBullet>
 					))}
 				</CardBullets>
 				<CardDescription>{description}</CardDescription>
@@ -203,7 +198,12 @@ const Card = ({
 					<ExpandedContentWrapper>
 						<ExpandedContent />
 						<CardButtons>
-							<BlackButton onClick={() => setExpanded(false)}>
+							<BlackButton
+								onClick={() => {
+									setExpanded(false);
+									scrollRef.current.scrollIntoView();
+								}}
+							>
 								Read less
 							</BlackButton>
 							{actionBtn}
