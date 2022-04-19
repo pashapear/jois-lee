@@ -97,7 +97,7 @@ export default function About() {
 			<AboutPage id="about">
 				<Content isMobile={isMobile}>
 					<Overview isMobile={isMobile}>
-						Jois is a UI/UX Designer from South Korea passionate about creating
+						Jois is a UI/UX Designer from South Korea, passionate about creating
 						meaningful experiences for the user.
 					</Overview>
 					<Section>
