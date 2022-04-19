@@ -11,6 +11,15 @@ import {
 	PlantaContent
 } from "../components/ExpandedCardContent";
 
+const DownloadButton = () => {
+	const isMobile = useIsMobile();
+	return (
+		<ClearButton>
+			{isMobile ? "Download PDF" : "Download full case study"}
+		</ClearButton>
+	);
+};
+
 const PROJECTS = [
 	{
 		id: 1,
@@ -19,7 +28,8 @@ const PROJECTS = [
 		description:
 			"Making the search for jobs and candidates as smooth and fair as possible for both end users",
 		content: LinkedInContent,
-		img: { src: "/images/projects/linkedin-main.jpg", width: 320, height: 320 }
+		img: { src: "/images/projects/linkedin-main.jpg", width: 320, height: 320 },
+		actionBtn: <DownloadButton />
 	},
 	{
 		id: 2,
@@ -135,6 +145,7 @@ const ExpandedContentWrapper = styled.div`
 const Card = ({
 	id,
 	img,
+	actionBtn,
 	name,
 	bullets,
 	description,
@@ -142,15 +153,15 @@ const Card = ({
 }) => {
 	const isMobile = useIsMobile();
 	const [expanded, setExpanded] = React.useState(false);
-	// const { scrollYProgress } = useViewportScroll();
-	// const scale = useTransform(scrollYProgress, [0, 0.05], [0.5, 1]);
+	const imageRef = React.useRef(null);
+
+	React.useEffect(() => {
+		if (!expanded) imageRef.current.scrollIntoView({ behavior: "smooth" });
+	}, [expanded]);
+
 	return (
-		<CardWrapper
-		// style={{
-		// 	scale
-		// }}
-		>
-			<CardImage imageUrl={img.src} />
+		<CardWrapper>
+			<CardImage ref={imageRef} imageUrl={img.src} />
 			<CardContent isMobile={isMobile}>
 				<CardTitle>{name}</CardTitle>
 				<CardBullets>
@@ -165,7 +176,7 @@ const Card = ({
 						<BlackButton onClick={() => setExpanded(true)}>
 							Read more
 						</BlackButton>
-						{!isMobile && <ClearButton>Download full case study</ClearButton>}
+						{actionBtn}
 					</CardButtons>
 				) : (
 					<ExpandedContentWrapper>
@@ -174,7 +185,7 @@ const Card = ({
 							<BlackButton onClick={() => setExpanded(false)}>
 								Read less
 							</BlackButton>
-							{!isMobile && <ClearButton>Download full case study</ClearButton>}
+							{actionBtn}
 						</CardButtons>
 					</ExpandedContentWrapper>
 				)}
