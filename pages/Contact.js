@@ -10,10 +10,14 @@ const Wrapper = styled(PageContent)`
 `;
 
 export const Links = styled.div`
-	padding: 5rem 0 10rem 16.5rem;
+	padding: 10rem 0 10rem 16.5rem;
 	display: flex;
 	flex-direction: column;
 	gap: 0.5rem;
+
+	@media (max-width: 768px) {
+		padding: 5rem 0 10rem 5rem;
+	}
 
 	a {
 		text-decoration: underline;

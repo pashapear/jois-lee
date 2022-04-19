@@ -158,6 +158,12 @@ const ExpandedContentWrapper = styled(MotionDiv)`
 	gap: 5rem;
 `;
 
+const ScrollTarget = styled.div`
+	position: absolute;
+	top: -200px;
+	left: 50%;
+`;
+
 const Card = ({
 	id,
 	img,
@@ -177,10 +183,7 @@ const Card = ({
 
 	return (
 		<CardWrapper>
-			<div
-				style={{ position: "absolute", top: "-200px", left: "50%" }}
-				ref={scrollRef}
-			></div>
+			<ScrollTarget ref={scrollRef}></ScrollTarget>
 			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile}>
 				<CardTitle>{name}</CardTitle>

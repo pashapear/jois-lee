@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import { BlackButton, ClearButton } from "../components/Button";
 import Link from "next/link";
-import { ABOUT_ROUTE, WORK_ROUTE } from "../constants/routes";
+import { CONTACT_ROUTE, WORK_ROUTE } from "../constants/routes";
 import useIsMobile from "../hooks/useIsMobile";
 
 const Wrapper = styled.div`
@@ -46,8 +46,8 @@ export const LandingPage = () => {
 					enjoyable to users
 				</Blurb>
 				<Buttons>
-					<Link href={ABOUT_ROUTE}>
-						<BlackButton onClick={() => console.log("Hi")}>Say Hi</BlackButton>
+					<Link href={CONTACT_ROUTE}>
+						<BlackButton>Say Hi</BlackButton>
 					</Link>
 					<Link href={WORK_ROUTE}>
 						<ClearButton>Discover My Works</ClearButton>
