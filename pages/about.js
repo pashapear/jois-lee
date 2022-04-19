@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 import Image from "next/image";
 import useIsMobile from "../hooks/useIsMobile";
 import {
@@ -10,6 +10,24 @@ import {
 	Title,
 	TitleSection
 } from "../components/common";
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+`;
+
+const HelloCircleImg = styled.img`
+	position: absolute;
+	top: -10rem;
+	right: -10rem;
+	mix-blend-mode: difference;
+	animation: ${rotate} 60s linear infinite;
+`;
 
 const AboutPage = styled(PageContent)`
 	display: flex;
@@ -33,8 +51,10 @@ const Section = styled.div`
 	font-size: medium;
 `;
 const AlterEgo = styled(PageContent)`
+	position: relative;
 	background-color: black;
 	color: white;
+	overflow: hidden;
 `;
 
 const hobbies = [
@@ -99,6 +119,7 @@ export default function About() {
 				</Content>
 			</AboutPage>
 			<AlterEgo>
+				<HelloCircleImg src="/images/hello.svg" alt="Hello!" />
 				<TitleSection isMobile={isMobile}>
 					<Title style={{ paddingLeft: "0" }} isMobile={isMobile}>
 						alter ego
