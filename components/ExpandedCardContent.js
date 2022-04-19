@@ -9,6 +9,7 @@ const ExpandedCardContent = styled.div`
 const TwoCol = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
+	gap: 1rem;
 `;
 const TwoColTwoOne = styled(TwoCol)`
 	grid-template-columns: 2fr 1fr;
@@ -34,6 +35,9 @@ const BoldItem = styled.div`
 	padding-left: 2rem;
 	border-left: 7px solid black;
 	margin-bottom: 2rem;
+`;
+const Image = styled.img`
+	width: 100%;
 `;
 
 export const LinkedInContent = () => {
@@ -100,7 +104,10 @@ export const LinkedInContent = () => {
 						hiring process.
 					</p>
 				</div>
-				<div>[IMAGE]</div>
+				<Image
+					src="/images/projects/linkedin-1.jpg"
+					style={{ width: "100%" }}
+				/>
 			</TwoCol>
 			<TwoCol>
 				<div>
@@ -111,7 +118,10 @@ export const LinkedInContent = () => {
 						recruiters time and candidates endless waiting.
 					</p>
 				</div>
-				<div>[IMAGE]</div>
+				<Image
+					src="/images/projects/linkedin-2.jpg"
+					style={{ width: "100%" }}
+				/>
 			</TwoCol>
 			<TwoCol>
 				<div>
@@ -123,7 +133,10 @@ export const LinkedInContent = () => {
 						transitioning a candidate.
 					</p>
 				</div>
-				<div>[IMAGE]</div>
+				<Image
+					src="/images/projects/linkedin-3.jpg"
+					style={{ width: "100%" }}
+				/>
 			</TwoCol>
 		</ExpandedCardContent>
 	);
