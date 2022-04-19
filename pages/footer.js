@@ -1,8 +1,6 @@
 import React from "react";
 import styled from "styled-components";
 import { DesktopLinks } from "../components/Navigation";
-import { HOME_ROUTE } from "../constants/routes";
-import Link from "next/link";
 import { PageContent } from "../components/common";
 
 const FooterWrapper = styled(PageContent)`
@@ -15,9 +13,9 @@ export const Footer = () => {
 		<FooterWrapper>
 			<p>© {JSON.stringify(year)} Jois Lee</p>
 			<DesktopLinks />
-			<Link href={HOME_ROUTE}>
-				<p style={{ cursor: "pointer" }}>Back to Top</p>
-			</Link>
+			<p onClick={() => window.scrollTo(0, 0)} style={{ cursor: "pointer" }}>
+				Back to Top
+			</p>
 		</FooterWrapper>
 	);
 };

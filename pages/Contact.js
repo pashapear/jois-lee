@@ -33,17 +33,17 @@ export const Contact = () => {
 		<Wrapper id="contact">
 			<Links isMobile={isMobile}>
 				<h1>and more...</h1>
-				<a href="" target="#">
+				<a href="https://joisleeux.medium.com/" target="#">
 					medium
 				</a>
-				<a href="" target="#">
+				<a href="https://www.instagram.com/joisleeux/" target="#">
 					instagram
 				</a>
-				<a href="" target="#">
+				<a href="https://twitter.com/joisleeux" target="#">
 					twitter
 				</a>
-				<a href="" target="#">
-					linkedin
+				<a href="https://www.linkedin.com/in/joislee/" target="#">
+					linkedIn
 				</a>
 				<p>
 					<u>email</u>:{" "}

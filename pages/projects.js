@@ -15,7 +15,9 @@ const DownloadButton = () => {
 	const isMobile = useIsMobile();
 	return (
 		<ClearButton>
-			{isMobile ? "Download PDF" : "Download full case study"}
+			<a download href="/files/jois-lee-linkedIn.pdf">
+				{isMobile ? "Download PDF" : "Download full case study"}
+			</a>
 		</ClearButton>
 	);
 };
