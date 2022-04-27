@@ -56,6 +56,7 @@ const theme = {
 const PageContent = styled(motion.div)`
 	flex: 1 0 auto;
 	font-size: ${({ isMobile }) => (isMobile ? "1rem" : "2rem")};
+	/* overflow: hidden; */
 `;
 
 export default function App({ Component, pageProps }) {
