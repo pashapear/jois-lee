@@ -171,7 +171,6 @@ const CardButtons = styled(MotionDiv)`
 const ExpandedContentWrapper = styled(MotionDiv)`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap: 5rem;
 `;
 

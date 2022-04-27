@@ -5,11 +5,13 @@ const ExpandedCardContent = styled.div`
 	display: flex;
 	flex-direction: column;
 	gap: 2rem;
+	max-width: 40rem;
 `;
 const TwoCol = styled.div`
 	display: grid;
 	grid-template-columns: 1fr 1fr;
-	gap: 1rem;
+	gap: 2rem;
+	align-items: center;
 
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
@@ -28,7 +30,7 @@ const ColContent = styled.div`
 `;
 const OneCol = styled.div``;
 const Section = styled.div`
-	max-width: 20rem;
+	max-width: 15rem;
 `;
 const Title = styled.h3`
 	color: var(--blue);
@@ -52,7 +54,7 @@ const Image = styled.img`
 export const LinkedInContent = () => {
 	return (
 		<ExpandedCardContent>
-			<TwoCol>
+			<TwoCol style={{ alignItems: "flex-start" }}>
 				<ColContent>
 					<Section>
 						<Title>Role</Title>
