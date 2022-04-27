@@ -18,8 +18,9 @@ const InnerWrapper = styled.div`
 `;
 const Title = styled.h1`
 	max-width: 27rem;
-	margin-top: 6rem;
+	margin-top: 9rem;
 	margin-bottom: 0;
+	line-height: normal;
 `;
 const Blurb = styled.h2`
 	font-size: ${({ isMobile }) => (isMobile ? "1.125" : "1.5rem")};
