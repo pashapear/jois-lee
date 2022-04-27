@@ -13,6 +13,8 @@ export const BlackButton = styled(motion.button).attrs({
 	padding: 0.813rem 1.5rem;
 	display: flex;
 	align-items: center;
+	white-space: nowrap;
+	overflow: hidden;
 `;
 
 export const ClearButton = styled(BlackButton)`
