@@ -50,13 +50,18 @@ const BoldItem = styled.div`
 `;
 const ImageTrigger = styled.img`
 	width: 100%;
+	cursor: pointer;
 `;
 
 const Image = ({ src }) => {
 	const [toggle, setToggle] = React.useState(false);
 	return (
 		<>
-			<ImageTrigger src={src} onClick={() => setToggle((prev) => !prev)} />
+			<ImageTrigger
+				role="button"
+				src={src}
+				onClick={() => setToggle((prev) => !prev)}
+			/>
 			<FsLightbox toggler={toggle} sources={[src]} />
 		</>
 	);
