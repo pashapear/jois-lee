@@ -114,13 +114,13 @@ const CardContent = styled(MotionDiv)`
 	}
 
 	@media (max-width: 768px) {
-		grid-template-columns: 1fr 3fr;
+		grid-template-columns: 1fr;
 		grid-template-rows: repeat(3, auto);
 		grid-template-areas:
-			"index title"
-			"index description"
-			"bullets description"
-			"bullets buttons";
+			"title"
+			"description"
+			"description"
+			"buttons";
 	}
 `;
 
@@ -199,15 +199,19 @@ const Card = ({
 			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile} expanded={expanded}>
 				<CardTitle>{name}</CardTitle>
-				<CardBullets isMobile={isMobile}>
-					{bullets.map((bullet, idx) => (
-						<CardBullet key={idx}>{bullet}</CardBullet>
-					))}
-				</CardBullets>
+				{!isMobile && (
+					<CardBullets isMobile={isMobile}>
+						{bullets.map((bullet, idx) => (
+							<CardBullet key={idx}>{bullet}</CardBullet>
+						))}
+					</CardBullets>
+				)}
 				<CardDescription>{description}</CardDescription>
-				<CardIndex isMobile={isMobile} expanded={expanded}>
-					0{id}
-				</CardIndex>
+				{!isMobile && (
+					<CardIndex isMobile={isMobile} expanded={expanded}>
+						0{id}
+					</CardIndex>
+				)}
 				{!expanded ? (
 					<CardButtons>
 						<BlackButton onClick={() => setExpanded(true)}>
