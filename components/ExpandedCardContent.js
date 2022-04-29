@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import FsLightbox from "fslightbox-react";
 
 const ExpandedCardContent = styled.div`
 	display: flex;
@@ -47,9 +48,19 @@ const BoldItem = styled.div`
 	border-left: 7px solid black;
 	margin-bottom: 2rem;
 `;
-const Image = styled.img`
+const ImageTrigger = styled.img`
 	width: 100%;
 `;
+
+const Image = ({ src }) => {
+	const [toggle, setToggle] = React.useState(false);
+	return (
+		<>
+			<ImageTrigger src={src} onClick={() => setToggle((prev) => !prev)} />
+			<FsLightbox toggler={toggle} sources={[src]} />
+		</>
+	);
+};
 
 export const LinkedInContent = () => {
 	return (
