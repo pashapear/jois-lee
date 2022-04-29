@@ -23,16 +23,21 @@ const rotate = keyframes`
 
 const HelloCircleImg = styled.img`
 	position: absolute;
-	top: -10rem;
-	right: -10rem;
+	top: -8rem;
+	right: -8rem;
 	mix-blend-mode: difference;
 	animation: ${rotate} 60s linear infinite;
 `;
 
 const AboutPage = styled(PageContent)`
 	display: flex;
-	justify-content: center;
 	margin-bottom: 10rem;
+	padding-left: 40vw;
+
+	@media (max-width: 768px) {
+		padding-left: 0;
+		justify-content: center;
+	}
 `;
 
 const Content = styled.div`
@@ -119,27 +124,25 @@ export default function About() {
 				</Content>
 			</AboutPage>
 			<AlterEgo>
-				<HelloCircleImg src="/images/hello.svg" alt="Hello!" />
+				{!isMobile && <HelloCircleImg src="/images/hello.svg" alt="Hello!" />}
 				<TitleSection isMobile={isMobile}>
 					<Title style={{ paddingLeft: "0" }} isMobile={isMobile}>
 						alter ego
 					</Title>
-					<Section>When I’m not working, you can find me...</Section>
+					<Section>{`When I’m not working, you can find me...`}</Section>
 				</TitleSection>
 				<List style={{ gap: "5rem" }} isMobile={isMobile}>
 					{hobbies.map((item, i) => (
 						<Item
 							style={{
-								gap: !isMobile ? "0.25rem" : "2rem",
-								gridTemplateColumns: isMobile ? "1fr" : "20rem 30rem"
+								gap: "2.5rem",
+								gridTemplateColumns: isMobile ? "1fr" : "15rem 30rem"
 							}}
 							isMobile={isMobile}
 							key={item.name}
 						>
 							<ItemImage
-							// style={{
-							// 	width: !isMobile ? "25rem" : "unset"
-							// }}
+								style={{ justifyContent: isMobile ? "center" : "flex-end" }}
 							>
 								<Image
 									alt={item.name}

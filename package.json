@@ -8,6 +8,7 @@
 	"dependencies": {
 		"eslint-config-react-app": "^7.0.1",
 		"framer-motion": "^6.3.0",
+		"fslightbox-react": "^1.6.2-2",
 		"hamburger-react": "^2.5.0",
 		"next": "latest",
 		"react": "^18.0.0",

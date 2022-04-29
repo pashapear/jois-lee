@@ -96,49 +96,69 @@ const CardImage = styled(motion.div)`
 	background-size: cover;
 `;
 const CardContent = styled(MotionDiv)`
-	padding: 2rem;
+	padding: 2rem 4rem;
 	display: grid;
 	column-gap: 1rem;
 	justify-content: center;
-	grid-template-columns: ${({ isMobile }) =>
-		isMobile ? "1fr 3fr" : "2fr 6fr 1fr"};
-	grid-template-rows: repeat(3, auto);
-	grid-template-areas: ${({ isMobile }) => {
-		if (isMobile) {
-			return `"index title"
-					"index description"
-					"bullets description"
-					"bullets buttons"`;
-		} else {
-			return `"bullets title index"
-					"bullets description index"
-					"bullets buttons index"`;
-		}
-	}};
+	grid-template-columns: 2fr 6fr 1fr;
+	grid-template-rows: ${({ expanded }) =>
+		expanded ? "repeat(3, auto)" : "3rem 5rem 4rem"};
+	grid-template-areas:
+		"bullets title index"
+		"bullets description index"
+		"bullets buttons index";
+
+	@media (max-width: 1000px) {
+		grid-template-rows: ${({ expanded }) =>
+			expanded ? "repeat(3, auto)" : "3rem 6rem 4rem"};
+	}
+
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr 3fr;
+		grid-template-rows: repeat(3, auto);
+		grid-template-areas:
+			"index title"
+			"index description"
+			"bullets description"
+			"bullets buttons";
+	}
 `;
+
 const CardTitle = styled.h2`
 	grid-area: title;
-	margin-bottom: 0.75rem;
+
+	@media (max-width: 768px) {
+		margin-bottom: 0.75rem;
+	}
 `;
 const CardBullets = styled.div`
 	grid-area: bullets;
-	padding-top: ${({ isMobile }) => (isMobile ? 0 : "1rem")};
-	padding-left: ${({ isMobile }) => (isMobile ? 0 : "2rem")};
+	margin-top: 0.25rem;
 `;
 const CardBullet = styled.p`
 	font-size: medium;
+
+	@media (max-width: 768px) {
+		font-size: small;
+	}
 `;
 const CardDescription = styled.p`
 	grid-area: description;
 	max-width: 35rem;
 	margin-bottom: 1rem;
 	font-size: large;
+
+	@media (max-width: 768px) {
+		font-size: medium;
+	}
 `;
 const CardIndex = styled.h1`
 	grid-area: index;
 	font-size: ${({ isMobile }) => (isMobile ? "5rem" : "10rem")};
 	font-family: "Poppins", sans-serif;
-	padding-right: ${({ isMobile }) => (isMobile ? "0" : "5rem")};
+	align-self: ${({ expanded, isMobile }) =>
+		expanded || isMobile ? "flex-start" : "center"};
+	line-height: 1;
 `;
 
 const CardButtons = styled(MotionDiv)`
@@ -151,7 +171,6 @@ const CardButtons = styled(MotionDiv)`
 const ExpandedContentWrapper = styled(MotionDiv)`
 	display: flex;
 	flex-direction: column;
-	align-items: center;
 	gap: 5rem;
 `;
 
@@ -178,7 +197,7 @@ const Card = ({
 		<CardWrapper>
 			<ScrollTarget ref={scrollRef}></ScrollTarget>
 			<CardImage imageUrl={img.src} />
-			<CardContent isMobile={isMobile}>
+			<CardContent isMobile={isMobile} expanded={expanded}>
 				<CardTitle>{name}</CardTitle>
 				<CardBullets isMobile={isMobile}>
 					{bullets.map((bullet, idx) => (
@@ -186,7 +205,9 @@ const Card = ({
 					))}
 				</CardBullets>
 				<CardDescription>{description}</CardDescription>
-				<CardIndex isMobile={isMobile}>0{id}</CardIndex>
+				<CardIndex isMobile={isMobile} expanded={expanded}>
+					0{id}
+				</CardIndex>
 				{!expanded ? (
 					<CardButtons>
 						<BlackButton onClick={() => setExpanded(true)}>
