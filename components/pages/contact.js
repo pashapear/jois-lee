@@ -2,10 +2,12 @@ import React from "react";
 import styled from "styled-components";
 import useIsMobile from "../../hooks/useIsMobile";
 import { PageContent } from "../common";
+import { ScrollTarget } from "../ScrollTarget";
 
 const Wrapper = styled(PageContent)`
 	display: flex;
 	flex-direction: column;
+	position: relative;
 `;
 
 export const Links = styled.div`
@@ -33,7 +35,8 @@ export const Links = styled.div`
 export const Contact = () => {
 	const isMobile = useIsMobile();
 	return (
-		<Wrapper id="contact">
+		<Wrapper>
+			<ScrollTarget id="contact" offset={50} />
 			<Links isMobile={isMobile}>
 				<h1>and more...</h1>
 				<a href="https://joisleeux.medium.com/" target="#">

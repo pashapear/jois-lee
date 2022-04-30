@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import useIsMobile from "../../hooks/useIsMobile";
 import { BlackButton, ClearButton } from "../Button";
+import { ScrollTarget } from "../ScrollTarget";
 import { motion } from "framer-motion";
 import {
 	LinkedInContent,
@@ -174,12 +175,6 @@ const ExpandedContentWrapper = styled(MotionDiv)`
 	gap: 5rem;
 `;
 
-const ScrollTarget = styled.div`
-	position: absolute;
-	top: -200px;
-	left: 50%;
-`;
-
 const Card = ({
 	id,
 	img,
@@ -195,7 +190,7 @@ const Card = ({
 
 	return (
 		<CardWrapper>
-			<ScrollTarget ref={scrollRef}></ScrollTarget>
+			<ScrollTarget id="projects" offset={-200} ref={scrollRef} />
 			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile} expanded={expanded}>
 				<CardTitle>{name}</CardTitle>

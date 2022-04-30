@@ -10,6 +10,7 @@ import {
 	Title,
 	TitleSection
 } from "../common";
+import { ScrollTarget } from "../ScrollTarget";
 
 const rotate = keyframes`
   from {
@@ -30,6 +31,7 @@ const HelloCircleImg = styled.img`
 `;
 
 const AboutPage = styled(PageContent)`
+	position: relative;
 	display: flex;
 	margin-bottom: 10rem;
 	padding-left: 40vw;
@@ -99,7 +101,8 @@ export default function About() {
 	const isMobile = useIsMobile();
 	return (
 		<>
-			<AboutPage id="about">
+			<AboutPage>
+				<ScrollTarget id="about" offset={-150} />
 				<Content isMobile={isMobile}>
 					<Overview isMobile={isMobile}>
 						Jois is a UI/UX Designer from South Korea, passionate about creating
