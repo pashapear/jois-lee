@@ -107,10 +107,11 @@ const hobbies = [
 
 export default function About() {
 	const isMobile = useIsMobile();
+	const scrollOffset = isMobile ? -100 : -200;
 	return (
 		<>
 			<AboutPage>
-				<ScrollTarget id="about" offset={-200} />
+				<ScrollTarget id="about" offset={scrollOffset} />
 				<Content isMobile={isMobile}>
 					<Overview isMobile={isMobile}>
 						Jois is a UI/UX Designer from South Korea, passionate about creating
