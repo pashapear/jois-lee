@@ -63,6 +63,7 @@ const PROJECTS = [
 ];
 
 const Wrapper = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -190,7 +191,7 @@ const Card = ({
 
 	return (
 		<CardWrapper>
-			<ScrollTarget id="projects" offset={-200} ref={scrollRef} />
+			<ScrollTarget offset={-200} ref={scrollRef} />
 			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile} expanded={expanded}>
 				<CardTitle>{name}</CardTitle>
@@ -237,7 +238,8 @@ const Card = ({
 
 export const Projects = () => {
 	return (
-		<Wrapper id="work">
+		<Wrapper>
+			<ScrollTarget id="work" offset={-100} />
 			{PROJECTS.map((project) => (
 				<Card key={project.id} {...project} />
 			))}

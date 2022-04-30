@@ -7,7 +7,7 @@ const rotate = keyframes`
   }
 
   to {
-    transform: rotateZ(360deg);
+    transform: rotateZ(-360deg);
   }
 `;
 
