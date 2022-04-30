@@ -117,10 +117,10 @@ const CardContent = styled(MotionDiv)`
 
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
-		grid-template-rows: repeat(3, auto);
+		grid-template-rows: repeat(4, auto);
 		grid-template-areas:
 			"title"
-			"description"
+			"bullets"
 			"description"
 			"buttons";
 	}
@@ -128,14 +128,17 @@ const CardContent = styled(MotionDiv)`
 
 const CardTitle = styled.h2`
 	grid-area: title;
-
-	@media (max-width: 768px) {
-		margin-bottom: 0.75rem;
-	}
 `;
 const CardBullets = styled.div`
 	grid-area: bullets;
 	margin-top: 0.25rem;
+
+	@media (max-width: 768px) {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		display: flex;
+		gap: 0.5rem;
+	}
 `;
 const CardBullet = styled.p`
 	font-size: medium;
@@ -195,13 +198,11 @@ const Card = ({
 			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile} expanded={expanded}>
 				<CardTitle>{name}</CardTitle>
-				{!isMobile && (
-					<CardBullets isMobile={isMobile}>
-						{bullets.map((bullet, idx) => (
-							<CardBullet key={idx}>{bullet}</CardBullet>
-						))}
-					</CardBullets>
-				)}
+				<CardBullets isMobile={isMobile}>
+					{bullets.map((bullet, idx) => (
+						<CardBullet key={idx}>{bullet}</CardBullet>
+					))}
+				</CardBullets>
 				<CardDescription>{description}</CardDescription>
 				{!isMobile && (
 					<CardIndex isMobile={isMobile} expanded={expanded}>
