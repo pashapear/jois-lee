@@ -10,29 +10,15 @@ import {
 	Title,
 	TitleSection
 } from "../common";
+import { ScrollTarget } from "../ScrollTarget";
 
-const rotate = keyframes`
-  from {
-    transform: rotate(0deg);
-  }
-
-  to {
-    transform: rotate(360deg);
-  }
+const PageSection = styled(PageContent)`
+	position: relative;
+	overflow: hidden;
 `;
 
-const HelloCircleImg = styled.img`
-	position: absolute;
-	top: -8rem;
-	right: -8rem;
-	mix-blend-mode: difference;
-	animation: ${rotate} 60s linear infinite;
-`;
-
-const AboutPage = styled(PageContent)`
-	display: flex;
-	margin-bottom: 10rem;
-	padding-left: 40vw;
+const AboutPage = styled(PageSection)`
+	padding-bottom: 10rem;
 
 	@media (max-width: 768px) {
 		padding-left: 0;
@@ -40,7 +26,37 @@ const AboutPage = styled(PageContent)`
 	}
 `;
 
+const AlterEgo = styled(PageSection)`
+	background-color: black;
+	color: white;
+`;
+
+const rotate = keyframes`
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(-360deg);
+  }
+`;
+
+// const HelloCircleImgBlack = styled.img`
+// 	position: absolute;
+// 	bottom: -12rem;
+// 	right: -8rem;
+// 	animation: ${rotate} 60s linear infinite;
+// `;
+
+const HelloCircleImgWhite = styled.img`
+	position: absolute;
+	top: -12rem;
+	right: -8rem;
+	animation: ${rotate} 60s linear infinite;
+`;
+
 const Content = styled.div`
+	padding-left: ${({ isMobile }) => (isMobile ? "5vw" : "25vw")};
 	max-width: ${({ isMobile }) => (isMobile ? "90vw" : "50vw")};
 	display: flex;
 	flex-direction: column;
@@ -54,12 +70,6 @@ const Overview = styled.h5`
 const Section = styled.div`
 	max-width: 47rem;
 	font-size: medium;
-`;
-const AlterEgo = styled(PageContent)`
-	position: relative;
-	background-color: black;
-	color: white;
-	overflow: hidden;
 `;
 
 const hobbies = [
@@ -99,7 +109,8 @@ export default function About() {
 	const isMobile = useIsMobile();
 	return (
 		<>
-			<AboutPage id="about">
+			<AboutPage>
+				<ScrollTarget id="about" offset={-200} />
 				<Content isMobile={isMobile}>
 					<Overview isMobile={isMobile}>
 						Jois is a UI/UX Designer from South Korea, passionate about creating
@@ -122,9 +133,22 @@ export default function About() {
 						tea.
 					</Section>
 				</Content>
+				{/* {!isMobile && (
+					<HelloCircleImgBlack
+						key="hello-black"
+						src="/images/hello-black.svg"
+						alt="Hello!"
+					/>
+				)} */}
 			</AboutPage>
 			<AlterEgo>
-				{!isMobile && <HelloCircleImg src="/images/hello.svg" alt="Hello!" />}
+				{!isMobile && (
+					<HelloCircleImgWhite
+						key="hello-white"
+						src="/images/hello.svg"
+						alt="Hello!"
+					/>
+				)}
 				<TitleSection isMobile={isMobile}>
 					<Title style={{ paddingLeft: "0" }} isMobile={isMobile}>
 						alter ego

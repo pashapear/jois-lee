@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import useIsMobile from "../../hooks/useIsMobile";
 import { BlackButton, ClearButton } from "../Button";
+import { ScrollTarget } from "../ScrollTarget";
 import { motion } from "framer-motion";
 import {
 	LinkedInContent,
@@ -62,6 +63,7 @@ const PROJECTS = [
 ];
 
 const Wrapper = styled.div`
+	position: relative;
 	display: flex;
 	flex-direction: column;
 	align-items: center;
@@ -115,10 +117,10 @@ const CardContent = styled(MotionDiv)`
 
 	@media (max-width: 768px) {
 		grid-template-columns: 1fr;
-		grid-template-rows: repeat(3, auto);
+		grid-template-rows: repeat(4, auto);
 		grid-template-areas:
 			"title"
-			"description"
+			"bullets"
 			"description"
 			"buttons";
 	}
@@ -126,14 +128,17 @@ const CardContent = styled(MotionDiv)`
 
 const CardTitle = styled.h2`
 	grid-area: title;
-
-	@media (max-width: 768px) {
-		margin-bottom: 0.75rem;
-	}
 `;
 const CardBullets = styled.div`
 	grid-area: bullets;
 	margin-top: 0.25rem;
+
+	@media (max-width: 768px) {
+		margin-top: 0;
+		margin-bottom: 1rem;
+		display: flex;
+		gap: 0.5rem;
+	}
 `;
 const CardBullet = styled.p`
 	font-size: medium;
@@ -174,12 +179,6 @@ const ExpandedContentWrapper = styled(MotionDiv)`
 	gap: 5rem;
 `;
 
-const ScrollTarget = styled.div`
-	position: absolute;
-	top: -200px;
-	left: 50%;
-`;
-
 const Card = ({
 	id,
 	img,
@@ -195,17 +194,15 @@ const Card = ({
 
 	return (
 		<CardWrapper>
-			<ScrollTarget ref={scrollRef}></ScrollTarget>
+			<ScrollTarget offset={-200} ref={scrollRef} />
 			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile} expanded={expanded}>
 				<CardTitle>{name}</CardTitle>
-				{!isMobile && (
-					<CardBullets isMobile={isMobile}>
-						{bullets.map((bullet, idx) => (
-							<CardBullet key={idx}>{bullet}</CardBullet>
-						))}
-					</CardBullets>
-				)}
+				<CardBullets isMobile={isMobile}>
+					{bullets.map((bullet, idx) => (
+						<CardBullet key={idx}>{bullet}</CardBullet>
+					))}
+				</CardBullets>
 				<CardDescription>{description}</CardDescription>
 				{!isMobile && (
 					<CardIndex isMobile={isMobile} expanded={expanded}>
@@ -242,7 +239,8 @@ const Card = ({
 
 export const Projects = () => {
 	return (
-		<Wrapper id="work">
+		<Wrapper>
+			<ScrollTarget id="work" offset={-100} />
 			{PROJECTS.map((project) => (
 				<Card key={project.id} {...project} />
 			))}
