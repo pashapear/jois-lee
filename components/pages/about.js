@@ -41,17 +41,17 @@ const rotate = keyframes`
   }
 `;
 
-// const HelloCircleImgBlack = styled.img`
-// 	position: absolute;
-// 	bottom: -12rem;
-// 	right: -8rem;
-// 	animation: ${rotate} 60s linear infinite;
-// `;
+const HelloCircleImgBlack = styled.img`
+	position: absolute;
+	bottom: -10.55rem;
+	right: -10rem;
+	animation: ${rotate} 60s linear infinite;
+`;
 
 const HelloCircleImgWhite = styled.img`
 	position: absolute;
-	top: -12rem;
-	right: -8rem;
+	top: -11rem;
+	right: -10rem;
 	animation: ${rotate} 60s linear infinite;
 `;
 
@@ -107,10 +107,11 @@ const hobbies = [
 
 export default function About() {
 	const isMobile = useIsMobile();
+	const scrollOffset = isMobile ? -100 : -200;
 	return (
 		<>
 			<AboutPage>
-				<ScrollTarget id="about" offset={-200} />
+				<ScrollTarget id="about" offset={scrollOffset} />
 				<Content isMobile={isMobile}>
 					<Overview isMobile={isMobile}>
 						Jois is a UI/UX Designer from South Korea, passionate about creating
@@ -133,19 +134,19 @@ export default function About() {
 						tea.
 					</Section>
 				</Content>
-				{/* {!isMobile && (
+				{!isMobile && (
 					<HelloCircleImgBlack
 						key="hello-black"
 						src="/images/hello-black.svg"
 						alt="Hello!"
 					/>
-				)} */}
+				)}
 			</AboutPage>
 			<AlterEgo>
 				{!isMobile && (
 					<HelloCircleImgWhite
 						key="hello-white"
-						src="/images/hello.svg"
+						src="/images/hello-white.svg"
 						alt="Hello!"
 					/>
 				)}

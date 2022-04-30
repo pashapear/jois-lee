@@ -191,10 +191,11 @@ const Card = ({
 	const isMobile = useIsMobile();
 	const [expanded, setExpanded] = React.useState(false);
 	const scrollRef = React.useRef(null);
+	const scrollOffset = isMobile ? -150 : -200;
 
 	return (
 		<CardWrapper>
-			<ScrollTarget offset={-200} ref={scrollRef} />
+			<ScrollTarget offset={scrollOffset} ref={scrollRef} />
 			<CardImage imageUrl={img.src} />
 			<CardContent isMobile={isMobile} expanded={expanded}>
 				<CardTitle>{name}</CardTitle>
@@ -238,9 +239,11 @@ const Card = ({
 };
 
 export const Projects = () => {
+	const isMobile = useIsMobile();
+	const scrollOffset = isMobile ? -50 : -100;
 	return (
 		<Wrapper>
-			<ScrollTarget id="work" offset={-100} />
+			<ScrollTarget id="work" offset={scrollOffset} />
 			{PROJECTS.map((project) => (
 				<Card key={project.id} {...project} />
 			))}
