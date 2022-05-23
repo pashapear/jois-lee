@@ -3,7 +3,6 @@ import styled, { createGlobalStyle, ThemeProvider } from "styled-components";
 import Navigation from "../components/Navigation";
 import useIsMobile from "../hooks/useIsMobile";
 import { motion, AnimatePresence } from "framer-motion";
-// import "../normalize.css";
 
 const GlobalStyle = createGlobalStyle`
   :root {
@@ -28,6 +27,7 @@ const GlobalStyle = createGlobalStyle`
   }
   button {
 	font-size: 1rem;
+	font-family: "Comfortaa", sans-serif;
   }
   p, h1, h2, h3, h4, h5, h6 {
 	  margin: 0;
