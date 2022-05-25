@@ -24,6 +24,12 @@ const TwoColTwoOne = styled(TwoCol)`
 		grid-template-columns: 1fr;
 	}
 `;
+const ThreeCol = styled(TwoCol)`
+	grid-template-columns: repeat(3, 1fr);
+	@media (max-width: 768px) {
+		grid-template-columns: 1fr;
+	}
+`;
 const ColContent = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -241,6 +247,11 @@ export const PlantaContent = () => {
 				</div>
 				<Image src="/images/projects/planta-2.jpg" />
 			</TwoColTwoOne>
+			<ThreeCol>
+				<Image src="/images/projects/planta-3.jpeg" />
+				<Image src="/images/projects/planta-4.jpeg" />
+				<Image src="/images/projects/planta-5.jpeg" />
+			</ThreeCol>
 		</ExpandedCardContent>
 	);
 };
@@ -354,11 +365,8 @@ export const MContent = () => {
 				</BoldSection>
 				<BoldSection>
 					<BoldItem>
-						<h3>Creating Personas</h3>
-						<p>
-							Created personas to meet the user’s needs, experiences, behaviors
-							and goals
-						</p>
+						<h3>Designs</h3>
+						<p>Designed lofi & hifi wireframes and interactive prototypes</p>
 					</BoldItem>
 				</BoldSection>
 				<BoldSection>

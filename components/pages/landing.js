@@ -17,13 +17,14 @@ const InnerWrapper = styled.div`
 	max-width: 50rem;
 `;
 const Title = styled.h1`
+	font-size: ${({ isMobile }) => (isMobile ? "3rem" : "4rem")};
 	max-width: 27rem;
 	margin-top: 9rem;
 	margin-bottom: 0;
 	line-height: normal;
 `;
 const Blurb = styled.h2`
-	font-size: ${({ isMobile }) => (isMobile ? "1.125" : "1.5rem")};
+	font-size: ${({ isMobile }) => (isMobile ? "1.125rem" : "1.5rem")};
 	font-weight: normal;
 	line-height: 150%;
 	margin-top: 1rem;
@@ -41,7 +42,7 @@ export const LandingPage = () => {
 		<Wrapper id="home" isMobile={isMobile}>
 			{!isMobile && <div></div>}
 			<InnerWrapper>
-				<Title>Jois Lee = UX Designer</Title>
+				<Title isMobile={isMobile}>Jois Lee = UX Designer</Title>
 				<Blurb isMobile={isMobile}>
 					Using Empathy and Systematic thinking to create intuitive products
 					enjoyable to users
