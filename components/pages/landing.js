@@ -18,7 +18,7 @@ const InnerWrapper = styled.div`
 `;
 const Title = styled.h1`
 	font-size: ${({ isMobile }) => (isMobile ? "3rem" : "4rem")};
-	max-width: 27rem;
+	max-width: ${({ isMobile }) => (isMobile ? "20rem" : "27rem")};
 	margin-top: 9rem;
 	margin-bottom: 0;
 	line-height: normal;
