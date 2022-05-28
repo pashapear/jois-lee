@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import FsLightbox from "fslightbox-react";
 
+// #region Styled Components
 const ExpandedCardContent = styled.div`
 	display: flex;
 	flex-direction: column;
@@ -58,6 +59,7 @@ const ImageTrigger = styled.img`
 	width: 100%;
 	cursor: pointer;
 `;
+// #endregion
 
 const Image = ({ src }) => {
 	const [toggle, setToggle] = React.useState(false);
@@ -162,6 +164,103 @@ export const LinkedInContent = () => {
 				</div>
 				<Image src="/images/projects/linkedin-3.jpg" />
 			</TwoCol>
+		</ExpandedCardContent>
+	);
+};
+
+export const WinvestContent = () => {
+	return (
+		<ExpandedCardContent>
+			<TwoCol>
+				<ColContent>
+					<Section>
+						<Title>Role</Title>
+						<p>Product Designer, UX Researcher, UX/UI Designer</p>
+					</Section>
+					<Section>
+						<Title>Team</Title>
+						<p>2 Researchers, 1 Business Consultant, 1 Developer</p>
+					</Section>
+					<Section>
+						<Title>Timeline</Title>
+						<p>April 2022</p>
+					</Section>
+				</ColContent>
+				<ColContent>
+					<Section>
+						<Title>Scope</Title>
+						<p>
+							User Research, Personas, Ideation, User Flows, Wireframing, IA,
+							Interaction/ Visual Design
+						</p>
+					</Section>
+					<Section>
+						<Title>Tools</Title>
+						<p>Miro, Figma</p>
+					</Section>
+				</ColContent>
+			</TwoCol>
+			<OneCol>
+				<Title>Background</Title>
+				<p>
+					70% of women are deemed not financially literate. We wanted to empower
+					women/nonbinary folks to become more financially independent and make
+					informed financial decisions for their future. Bridging the financial
+					literacy gap can be a big task, thus we wanted to make an experience
+					approachable and tailored to the individual.
+				</p>
+			</OneCol>
+			<OneCol>
+				<Title>User Research</Title>
+				<p>After conducting user research we identified two main painpoints</p>
+				<ol>
+					<li>Lack of direction in how or where to learn about investing</li>
+					<li>Sense of community and expertise around investing</li>
+				</ol>
+			</OneCol>
+			<OneCol>
+				<Title>Solution</Title>
+				<p>
+					We decided to create an engaging mobile app that delivers valuable
+					finance education to women based on personal needs. Taking into
+					consideration the complex nature of the topic, we decided to break
+					down the information into bite-sized learning and fun quizzes,
+					motivated by earning medals and trophies on the learning journey.
+				</p>
+			</OneCol>
+			<TwoColTwoOne>
+				<div>
+					<Title>1. Learning Journey</Title>
+					<p>
+						Our user research showed one of the painpoints for women/NBs was not
+						being able to visualize the amount of effort they’ve put into their
+						financial learning journeys. To resolve this issue, we went with a
+						graph visualisation of cumulative minutes/hours that they’ve spent.
+						This would remind the users of how far they’ve come and feel
+						encouraged. The user can also access their progress any time by
+						drilling down into the cards at the bottom of the screen.
+					</p>
+				</div>
+				<Image src="/images/projects/winvest-1.jpeg" />
+			</TwoColTwoOne>
+			<TwoColTwoOne>
+				<div>
+					<Title>2. Bite Sized Learning</Title>
+					<p>
+						The main hinderances for women/NBs around investing were the amount
+						of information and vocabulary involved in learning. Thus we decided
+						to have a more organized learning journey that was incremental and
+						self-paced. This way, the users could always come back to the topic
+						where they left off.
+					</p>
+				</div>
+				<Image src="/images/projects/winvest-2.jpeg" />
+			</TwoColTwoOne>
+			<ThreeCol>
+				<Image src="/images/projects/winvest-4.jpeg" />
+				<Image src="/images/projects/winvest-5.jpeg" />
+				<Image src="/images/projects/winvest-6.jpeg" />
+			</ThreeCol>
 		</ExpandedCardContent>
 	);
 };
