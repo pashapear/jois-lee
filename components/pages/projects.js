@@ -8,7 +8,8 @@ import {
 	LinkedInContent,
 	MContent,
 	PashaContent,
-	PlantaContent
+	PlantaContent,
+	WinvestContent
 } from "../ExpandedCardContent";
 
 const DownloadButton = () => {
@@ -25,6 +26,15 @@ const DownloadButton = () => {
 const PROJECTS = [
 	{
 		id: 1,
+		name: "Winvest: Hackathon & App",
+		bullets: ["Product Design", "UX Research", "UX Design", "UI Design"],
+		description:
+			"A mobile app to bridge the financial literacy gap for women/nonbinary folks",
+		content: WinvestContent,
+		img: { src: "/images/projects/winvest-main.jpeg", width: 320, height: 320 }
+	},
+	{
+		id: 2,
 		name: "LinkedIn Features",
 		bullets: ["UX Research", "UX Design"],
 		description:
@@ -34,16 +44,16 @@ const PROJECTS = [
 		actionBtn: <DownloadButton />
 	},
 	{
-		id: 2,
+		id: 3,
 		name: "Planta App Redesign",
 		bullets: ["UX Research", "UI Design", "UX Design"],
 		description:
 			"Reimagining Planta, a mobile plant care app by designing features for a holistic user experience",
 		content: PlantaContent,
-		img: { src: "/images/projects/planta-main.jpg", width: 320, height: 320 }
+		img: { src: "/images/projects/planta-main.jpeg", width: 320, height: 320 }
 	},
 	{
-		id: 3,
+		id: 4,
 		name: "Pasha Pear",
 		bullets: ["Art Direction", "Illustration", "Photography"],
 		description:
@@ -52,7 +62,7 @@ const PROJECTS = [
 		img: { src: "/images/projects/pasha-main.jpg", width: 320, height: 320 }
 	},
 	{
-		id: 4,
+		id: 5,
 		name: "M____",
 		bullets: ["UX Design", "UI Design", "No-Code Dev"],
 		description:
@@ -80,6 +90,7 @@ const MotionDiv = styled(motion.div).attrs({
 })``;
 
 const CardWrapper = styled(motion.div)`
+	cursor: pointer;
 	position: relative;
 	width: 95vw;
 	max-width: 80rem;
@@ -87,6 +98,7 @@ const CardWrapper = styled(motion.div)`
 	flex-direction: column;
 	border: 2px solid black;
 	border-radius: var(--radius-l);
+	overflow: hidden;
 `;
 
 const CardImage = styled(motion.div)`
@@ -98,6 +110,7 @@ const CardImage = styled(motion.div)`
 	background-size: cover;
 `;
 const CardContent = styled(MotionDiv)`
+	cursor: default;
 	padding: 2rem 4rem;
 	display: grid;
 	column-gap: 1rem;
@@ -176,7 +189,8 @@ const CardButtons = styled(MotionDiv)`
 const ExpandedContentWrapper = styled(MotionDiv)`
 	display: flex;
 	flex-direction: column;
-	gap: 5rem;
+	gap: 3.5rem;
+	padding-bottom: 2.5rem;
 `;
 
 const Card = ({
@@ -193,10 +207,21 @@ const Card = ({
 	const scrollRef = React.useRef(null);
 	const scrollOffset = isMobile ? -150 : -200;
 
+	const closeCard = () => {
+		setExpanded(false);
+		scrollRef?.current.scrollIntoView();
+	};
+
+	const openCard = () => {
+		setExpanded(true);
+	};
+
+	const toggleCard = expanded ? closeCard : openCard;
+
 	return (
 		<CardWrapper>
 			<ScrollTarget offset={scrollOffset} ref={scrollRef} />
-			<CardImage imageUrl={img.src} />
+			<CardImage imageUrl={img.src} role="button" onClick={toggleCard} />
 			<CardContent isMobile={isMobile} expanded={expanded}>
 				<CardTitle>{name}</CardTitle>
 				<CardBullets isMobile={isMobile}>
@@ -212,23 +237,14 @@ const Card = ({
 				)}
 				{!expanded ? (
 					<CardButtons>
-						<BlackButton onClick={() => setExpanded(true)}>
-							Read more
-						</BlackButton>
+						<BlackButton onClick={openCard}>Read more</BlackButton>
 						{actionBtn}
 					</CardButtons>
 				) : (
 					<ExpandedContentWrapper>
 						<ExpandedContent />
 						<CardButtons>
-							<BlackButton
-								onClick={() => {
-									setExpanded(false);
-									scrollRef.current.scrollIntoView();
-								}}
-							>
-								Read less
-							</BlackButton>
+							<BlackButton onClick={closeCard}>Read less</BlackButton>
 							{actionBtn}
 						</CardButtons>
 					</ExpandedContentWrapper>
