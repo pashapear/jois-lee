@@ -171,9 +171,9 @@ export default function Navigation() {
 						<DesktopLinks />
 						<Links>
 							<a
-								title="Twitter"
-								target="#"
-								href="https://twitter.com/joisleeux"
+								title="Download resume"
+								download
+								href="/files/jois-lee-resume.pdf"
 							>
 								@joisleeux
 							</a>
