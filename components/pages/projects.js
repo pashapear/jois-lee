@@ -27,7 +27,7 @@ const PROJECTS = [
 	{
 		id: 1,
 		name: "Winvest: Hackathon & App",
-		bullets: ["Product Design", "UX Research", "UX Design", "UI Design"],
+		bullets: ["UX Design", "UI Design"],
 		description:
 			"A mobile app to bridge the financial literacy gap for women/nonbinary folks",
 		content: WinvestContent,
