@@ -48,11 +48,11 @@ export const LandingPage = () => {
 					enjoyable to users
 				</Blurb>
 				<Buttons>
-					<Link href={CONTACT_ROUTE}>
-						<BlackButton>Say Hi</BlackButton>
-					</Link>
 					<Link href={WORK_ROUTE}>
-						<ClearButton>Discover My Works</ClearButton>
+						<BlackButton>Discover My Works</BlackButton>
+					</Link>
+					<Link href={CONTACT_ROUTE}>
+						<ClearButton>Say Hi</ClearButton>
 					</Link>
 				</Buttons>
 			</InnerWrapper>
