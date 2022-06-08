@@ -256,6 +256,22 @@ export const WinvestContent = () => {
 				</div>
 				<Image src="/images/projects/winvest-2.jpeg" />
 			</TwoColTwoOne>
+			<TwoColTwoOne>
+				<div>
+					<Title>3. Forum</Title>
+					<p>
+						Our user research interviews and surveys revealed that money can be
+						a touchy topic for many women/NBs. Many mentioned getting input or
+						seeing other users’ experiences would help them feel more
+						comfortable starting their investing journey. It became clear, there
+						was a need for a safe, nonjudgmental space where they could ask
+						questions around finance. We decided the format of a forum would
+						address this need, while making it a collaborative, community
+						centered experience.
+					</p>
+				</div>
+				<Image src="/images/projects/winvest-3.jpeg" />
+			</TwoColTwoOne>
 			<ThreeCol>
 				<Image src="/images/projects/winvest-4.jpeg" />
 				<Image src="/images/projects/winvest-5.jpeg" />
