@@ -175,7 +175,7 @@ export default function Navigation() {
 								download
 								href="/files/jois-lee-resume.pdf"
 							>
-								@joisleeux
+								resume
 							</a>
 						</Links>
 					</>
